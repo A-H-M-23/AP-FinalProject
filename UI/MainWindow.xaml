@@ -21,12 +21,11 @@
 
 
 		<Border CornerRadius="0 20 20 0" Background="#f8f7fc" Grid.Column="2" Grid.ColumnSpan="2" Margin="0 0 0 0 " Grid.RowSpan="2" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown"/>
-		<!--left menu1-->
-
+		<!-- left menu1-->
 		<Border CornerRadius="20" Grid.RowSpan="2" Panel.ZIndex="2" Background="#6145e3">
 			<!--App Tile-->
 			<Grid>
-				<TextBlock Text="Chat App" Foreground="#ffffff" FontSize="16" VerticalAlignment="Top"
+				<TextBlock Text="MR.Clone App" Foreground="#ffffff" FontSize="16" VerticalAlignment="Top"
                            HorizontalAlignment="Center" FontWeight="SemiBold" Margin="0 30 0 0">
 					<TextBlock.LayoutTransform>
 						<RotateTransform Angle="90"/>
@@ -37,27 +36,52 @@
 
 				<StackPanel Margin="0 170 0 0">
 					<!--<uc:AccountMenuButton Title="A" GradientColor1="#d1abff" GradientColor2="#b07bff"/>
-                    <uc:AccountMenuButton Title="B" GradientColor1="#fba0cb" GradientColor2="#fe7094"/>-->
-					<!--<uc:AccountMenuButton Title="C" GradientColor1="#e5db6f" GradientColor2="#e2c649"/>-->
+                    <uc:AccountMenuButton Title="B" GradientColor1="#fba0cb" GradientColor2="#fe7094"/>
+					<uc:AccountMenuButton Title="C" GradientColor1="#e5db6f" GradientColor2="#e2c649"/>-->
 				</StackPanel>
 			</Grid>
 		</Border>
 
 		<!--left menu2-->
 		<Border Grid.Column="1" Grid.RowSpan="2" CornerRadius="0 20 20 0" Background="#6f50ff" Panel.ZIndex="1" Margin="-25 0 0 0">
-			<Grid>
-				<!--Top Combobox-->
-				<ComboBox Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Top" Margin="25 45 0 0">
-					<ComboBoxItem Content="Amir Maleki"/>
-					<ComboBoxItem Content="Moeen Rashidi" IsSelected="True"/>
-					<ComboBoxItem Content="Hossein Gh"/>
-					<ComboBoxItem Content="Reza Khodarahmi"/>
-				</ComboBox>
+            <Grid>
+                <!--Top Combobox-->
+                <ComboBox Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Top" Margin="25 45 0 0">
+                    <ComboBoxItem Content="MR.Clone" IsSelected="True"/>
+                    <ComboBoxItem Content="Moeen Rashidi"/>
+                    <ComboBoxItem Content="Hossein Gholizadeh"/>
+                    <ComboBoxItem Content="MohammadReza Khodarahmi"/>
+                    <ComboBoxItem Content="AmirHossein Maleki"/>
+                </ComboBox>
 
-				<!--Menu Buttons-->
+                <!--Menu Buttons-->
+                <StackPanel Margin="25 160 0 0">
+                    <uc:MenuButtons Title="Home" Icon="HomeOutline" IsActive="True"/>
+                    <uc:MenuButtons Title="Videos" Icon="Video"/>
+                    <uc:MenuButtons Title="Music" Icon="Music"/>
+                    <uc:MenuButtons Title="Images" Icon="Image"/>
+                </StackPanel>
 
-			</Grid>
+                <!--Bottom Menu Buttons-->
+                <StackPanel Margin="25 0 0 40" VerticalAlignment="Bottom">
+                    <uc:MenuButtons Title="Setting" Icon="Cog"/>
+                    <uc:MenuButtons Title="LogOut" Icon="Logout"/>
+                </StackPanel>
 
-		</Border>
+            </Grid>
+        </Border>
+        
+        <!-- Top Section -->
+        <Grid Grid.Column="2" Grid.ColumnSpan="2" Margin="40 30">
+            <!--Search Textbox-->
+            <Grid Width="500" HorizontalAlignment="Left">
+                <ComboBox Style="{StaticResource ComboBoxStyle2}" HorizontalAlignment="Left" Margin="3 0 0 0" Panel.ZIndex="2"/>
+                <ComboBoxItem Content="AllCategory" IsSelected="True"/>
+                <ComboBoxItem Content="Videos"/>
+                <ComboBoxItem Content="Music"/>
+                <ComboBoxItem Content="Images"/>
+                <ComboBoxItem Content="Messages"/>
+            </Grid>
+        </Grid>
 	</Grid>
 </Window>
