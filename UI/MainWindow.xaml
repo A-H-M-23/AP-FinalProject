@@ -1,12 +1,63 @@
 ﻿<Window x:Class="UI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:UI"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:uc="clr-namespace:UI.UserControls"
+        Height="830" Width="1250" ResizeMode="NoResize" Background="Transparent"
+        AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="55"/>
+			<ColumnDefinition Width="220"/>
+			<ColumnDefinition Width="350"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
 
-    </Grid>
+		<!--background-->
+
+
+		<Border CornerRadius="0 20 20 0" Background="#f8f7fc" Grid.Column="2" Grid.ColumnSpan="2" Margin="0 0 0 0 " Grid.RowSpan="2" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown"/>
+		<!--left menu1-->
+
+		<Border CornerRadius="20" Grid.RowSpan="2" Panel.ZIndex="2" Background="#6145e3">
+			<!--App Tile-->
+			<Grid>
+				<TextBlock Text="Chat App" Foreground="#ffffff" FontSize="16" VerticalAlignment="Top"
+                           HorizontalAlignment="Center" FontWeight="SemiBold" Margin="0 30 0 0">
+					<TextBlock.LayoutTransform>
+						<RotateTransform Angle="90"/>
+					</TextBlock.LayoutTransform>
+				</TextBlock>
+
+				<!--Account Button-->
+
+				<StackPanel Margin="0 170 0 0">
+					<!--<uc:AccountMenuButton Title="A" GradientColor1="#d1abff" GradientColor2="#b07bff"/>
+                    <uc:AccountMenuButton Title="B" GradientColor1="#fba0cb" GradientColor2="#fe7094"/>-->
+					<!--<uc:AccountMenuButton Title="C" GradientColor1="#e5db6f" GradientColor2="#e2c649"/>-->
+				</StackPanel>
+			</Grid>
+		</Border>
+
+		<!--left menu2-->
+		<Border Grid.Column="1" Grid.RowSpan="2" CornerRadius="0 20 20 0" Background="#6f50ff" Panel.ZIndex="1" Margin="-25 0 0 0">
+			<Grid>
+				<!--Top Combobox-->
+				<ComboBox Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Top" Margin="25 45 0 0">
+					<ComboBoxItem Content="Amir Maleki"/>
+					<ComboBoxItem Content="Moeen Rashidi" IsSelected="True"/>
+					<ComboBoxItem Content="Hossein Gh"/>
+					<ComboBoxItem Content="Reza Khodarahmi"/>
+				</ComboBox>
+
+				<!--Menu Buttons-->
+
+			</Grid>
+
+		</Border>
+	</Grid>
 </Window>
