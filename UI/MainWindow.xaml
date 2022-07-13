@@ -111,23 +111,23 @@
 	<!--Chat Section-->
 		<Border CornerRadius="15" Background="#ffffff" Grid.Column="3" Grid.Row="1" Margin="0 0 30 30" ClipToBounds="True">
 			<Grid>
-				<Grid.RowDefenition>
-					<RowDefenition height="auto"/>
-				    <RowDefenition height="*"/>
-				    <RowDefenition height="auto"/>
-				</Grid.RowDefenition>
+				<Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+				</Grid.RowDefinitions>
 			
 			    <!--Top Chat MenuBar-->
 			    <Grid Background="#ffffff">
 					<Grid.Effect>
-						<DropShadowEffect blurRadius="20" Shadowdepth="1" Direction="-90" Opacity="0.1"/>
+						<DropShadowEffect BlurRadius="20" ShadowDepth="1" Direction="-90" Opacity="0.1"/>
 					</Grid.Effect>
 					
-				    <Textblock text="Moonlab std" fontSize="16" Margin="20 15" HorizentalAligment="left"/>
-				    <StackPanel orientation="Horizental" Margin="0 0 10 0" HorizentalAligment="Right">
-						<TextBlock Text="and 3 others" VerticalAligment="Center" Margin="7 0" ForeGround="#8b8a8f" FontSize="15"/>
-					    <Button style="{staticResource textboxButton}">
-							<Icon:packIconMaterial kind="DotsVertical" Width="14" Height="14" Foreground="#88878e"/>
+				    <TextBlock Text="Moonlab std" FontSize="16" Margin="20 15" HorizontalAlignment="left"/>
+				    <StackPanel Orientation="Horizontal" Margin="0 0 10 0" HorizontalAlignment="Right">
+						<TextBlock Text="and 3 others" VerticalAlignment="Center" Margin="7 0" Foreground="#8b8a8f" FontSize="15"/>
+					    <Button Style="{StaticResource textBoxButton}">
+							<Icon:PackIconMaterial Kind="DotsVertical" Width="14" Height="14" Foreground="#88878e"/>
 						</Button>
 					</StackPanel>
 				</Grid>
