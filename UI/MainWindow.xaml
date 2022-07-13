@@ -4,7 +4,7 @@
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:uc="clr-namespace:UI.UserControls"
         Height="830" Width="1250" ResizeMode="NoResize" Background="Transparent"
-        AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" Icon="/MR.Clone.png">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooltoVis"/>
@@ -51,7 +51,7 @@
             <Grid>
                 <!--Top Combobox-->
                 <ComboBox Style="{DynamicResource ComboBoxStyle1}" VerticalAlignment="Top" Margin="25 45 0 0">
-                    <ComboBoxItem Content="MR.Clone" IsSelected="True"/>
+                    <ComboBoxItem Content="Produced By" IsSelected="True"/>
                     <ComboBoxItem Content="Moeen Rashidi"/>
                     <ComboBoxItem Content="Hossein Gholizadeh"/>
                     <ComboBoxItem Content="MohammadReza Khodarahmi"/>
