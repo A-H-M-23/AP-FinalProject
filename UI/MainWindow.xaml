@@ -5,12 +5,16 @@
         xmlns:uc="clr-namespace:UI.UserControls"
         Height="830" Width="1250" ResizeMode="NoResize" Background="Transparent"
         AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooltoVis"/>
+    </Window.Resources>
+    
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="55"/>
-			<ColumnDefinition Width="220"/>
-			<ColumnDefinition Width="350"/>
-			<ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="auto"/>
@@ -83,9 +87,26 @@
                     <ComboBoxItem Content="Messages"/>
                 </ComboBox>
                 <Rectangle Width="1" Fill="#e9e9e9" Panel.ZIndex="2" Margin="130 19 0 19" HorizontalAlignment="Left"/>
-                <TextBlock Margin="150 0 20 0" VerticalAlignment="Center" Foreground="#868686" Panel.ZIndex="1" IsHitTestVisible="False" Text="Search Here ..." Visibility="Visible"/>
-                <TextBox x:Name="txtSearch"/>
+                <TextBlock Margin="150 0 20 0" VerticalAlignment="Center" Foreground="#868686" Panel.ZIndex="1" IsHitTestVisible="False" Text="Search Here ..."
+                           Visibility="{Binding ElementName=txtboxSearch,Path=Text.IsEmpty,Converter={StaticResource BooltoVis}}"/>
+                <TextBox x:Name="txtboxSearch" Style="{StaticResource searchTextbox}"/>
+                <Button HorizontalAlignment="Right" Margin="0 0 7 0" Style="{StaticResource textBoxButton}">
+                    <Icon:PackIconMaterial Kind="Magnify" Foreground="#c7c7c7" />
+                </Button>
             </Grid>
+            
+            <!--Top Menu-->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Style="{StaticResource textBoxButton}">
+                    <Icon:PackIconMaterial Kind="BellOutline" Foreground="#88878e"/>
+                </Button>
+                <Button Style="{StaticResource textBoxButton}" Background="#e9e9e9">
+                    <Icon:PackIconMaterial Kind="AccountArrowLeftOutline" Foreground="#88878e"/>
+                </Button>
+                <Button Style="{StaticResource textBoxButton}">
+                    <Icon:PackIconMaterial Kind="DotsVertical" Foreground="#88878e"/>
+                </Button>
+            </StackPanel>
         </Grid>
 	</Grid>
 </Window>

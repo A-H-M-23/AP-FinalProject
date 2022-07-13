@@ -437,7 +437,7 @@
         </Style>
         <!--#endregion-->
 
-        <Style x:Name="searchTextbox" TargetType="TextBox">
+        <Style x:Key="searchTextbox" TargetType="TextBox">
             <Setter Property="Background" Value="#ffffff"/>
             <Setter Property="Foreground" Value="#767676"/>
             <Setter Property="BorderThickness" Value="0"/>
@@ -445,8 +445,50 @@
             <Setter Property="Padding" Value="150 15"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="0 10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBoxBase">
+                        <Border x:Name="border" CornerRadius="22" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="Part_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="#d9d9d9" TargetName="border"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="BorderBrush" Value="#d9d9d9" TargetName="border"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
+        <Style x:Key="textBoxButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#88878e"/>
+            <Setter Property="Tag" Value="Hidden"/>
+            <Setter Property="Margin" Value="3 0 0 0"/>
+            <Setter Property="Width" Value="35"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="50">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Tag" Value="Visible"/>
+                    <Setter Property="Background" Value="#e9e9e9"/>
+                    <Setter Property="Foreground" Value="AliceBlue"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
 
     </Application.Resources>
 </Application>
