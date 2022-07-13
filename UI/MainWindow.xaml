@@ -108,5 +108,30 @@
                 </Button>
             </StackPanel>
         </Grid>
+	<!--Chat Section-->
+		<Border CornerRadius="15" Background="#ffffff" Grid.Column="3" Grid.Row="1" Margin="0 0 30 30" ClipToBounds="True">
+			<Grid>
+				<Grid.RowDefenition>
+					<RowDefenition height="auto"/>
+				    <RowDefenition height="*"/>
+				    <RowDefenition height="auto"/>
+				</Grid.RowDefenition>
+			
+			    <!--Top Chat MenuBar-->
+			    <Grid Background="#ffffff">
+					<Grid.Effect>
+						<DropShadowEffect blurRadius="20" Shadowdepth="1" Direction="-90" Opacity="0.1"/>
+					</Grid.Effect>
+					
+				    <Textblock text="Moonlab std" fontSize="16" Margin="20 15" HorizentalAligment="left"/>
+				    <StackPanel orientation="Horizental" Margin="0 0 10 0" HorizentalAligment="Right">
+						<TextBlock Text="and 3 others" VerticalAligment="Center" Margin="7 0" ForeGround="#8b8a8f" FontSize="15"/>
+					    <Button style="{staticResource textboxButton}">
+							<Icon:packIconMaterial kind="DotsVertical" Width="14" Height="14" Foreground="#88878e"/>
+						</Button>
+					</StackPanel>
+				</Grid>
+			</Grid>
+		</Border>
 	</Grid>
 </Window>
