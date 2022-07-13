@@ -5,7 +5,9 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI", "UI\UI.csproj", "{2FB0B70A-E563-42C0-A404-556E5CE3CC49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sender", "Sender\Sender.csproj", "{DE69A1CD-7F75-47E2-8093-492F2EC289A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sender", "Sender\Sender.csproj", "{DE69A1CD-7F75-47E2-8093-492F2EC289A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Receiver", "Receiver\Receiver.csproj", "{5C302637-461B-454B-BF16-22F5E534E413}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DE69A1CD-7F75-47E2-8093-492F2EC289A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE69A1CD-7F75-47E2-8093-492F2EC289A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE69A1CD-7F75-47E2-8093-492F2EC289A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C302637-461B-454B-BF16-22F5E534E413}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C302637-461B-454B-BF16-22F5E534E413}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C302637-461B-454B-BF16-22F5E534E413}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C302637-461B-454B-BF16-22F5E534E413}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
