@@ -8,7 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="MR.Clone.png" />
+    <None Remove="Resources\MR.Clone.png" />
+    <None Remove="Resources\Person.png" />
+    <None Remove="Resources\Person2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\MR.Clone.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,7 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="MR.Clone.png" />
+    <Resource Include="Resources\Person.png" />
+    <Resource Include="Resources\Person2.png" />
   </ItemGroup>
 
   <ItemGroup>

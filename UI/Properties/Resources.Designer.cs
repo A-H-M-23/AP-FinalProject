@@ -69,5 +69,25 @@ namespace UI.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Person {
+            get {
+                object obj = ResourceManager.GetObject("Person", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Person2 {
+            get {
+                object obj = ResourceManager.GetObject("Person2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
