@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="UI.UserControls.MyFileSend"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             x:Name="myFileSend">
+    <Border CornerRadius="10 0 10 10" Background="#dadada" Padding="10 7" HorizontalAlignment="Right" Margin="0 5 0 0" FlowDirection="LeftToRight">
+        <StackPanel Orientation="Horizontal">
+            <Button Width="30" Height="30" Background="Silver" BorderThickness=".75" x:Name="AttachFile" Click="AttachFile_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
+                <Icon:PackIconMaterial Kind="File" Width="12" Foreground="Azure" />
+            </Button>
+            <Separator Margin="3 0 0 0">
+                <Separator.LayoutTransform>
+                    <RotateTransform Angle="90"/>
+                </Separator.LayoutTransform>
+            </Separator>
+            <TextBlock Text="{Binding ElementName=myFileSend,Path=Username}" FontSize="14" Foreground="#94939a" VerticalAlignment="Center" Margin="5 0 3 2"/>
+        </StackPanel>
+    </Border>
+</UserControl>

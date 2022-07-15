@@ -22,13 +22,12 @@
         </Grid.RowDefinitions>
 
         <!--background-->
-
         <Border CornerRadius="0 20 20 0" Background="#f8f7fc" Grid.Column="2" Grid.ColumnSpan="2" Margin="0 0 0 0 " Grid.RowSpan="2" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown"/>
         <!-- left menu1-->
         <Border CornerRadius="20" Grid.RowSpan="2" Panel.ZIndex="2" Background="#6145e3">
             <!--App Tile-->
             <Grid>
-                <TextBlock Text="MR.Clone App" Foreground="#ffffff" FontSize="16" VerticalAlignment="Top"
+                <TextBlock Text="M R . C l o n e  A p p" Foreground="#ffffff" FontSize="16" VerticalAlignment="Top"
                            HorizontalAlignment="Center" FontWeight="SemiBold" Margin="0 30 0 0">
                     <TextBlock.LayoutTransform>
                         <RotateTransform Angle="90"/>
@@ -60,6 +59,7 @@
                 <!--Menu Buttons-->
                 <StackPanel Margin="25 160 0 0">
                     <uc:MenuButtons Title="Home" Icon="HomeOutline" IsActive="True"/>
+                    <uc:MenuButtons Title="Files" Icon="Attachment"/>
                     <uc:MenuButtons Title="Videos" Icon="Video"/>
                     <uc:MenuButtons Title="Music" Icon="Music"/>
                     <uc:MenuButtons Title="Images" Icon="Image"/>
@@ -104,6 +104,9 @@
                 </Button>
                 <Button Style="{StaticResource textBoxButton}">
                     <Icon:PackIconMaterial Kind="DotsVertical" Foreground="#88878e"/>
+                </Button>
+                <Button Style="{StaticResource textBoxButton}">
+                    <Icon:PackIconMaterial Kind="Close" Foreground="#88878e"/>
                 </Button>
             </StackPanel>
         </Grid>
