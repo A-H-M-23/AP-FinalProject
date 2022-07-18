@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              x:Name="userFileSend">
-    <Border CornerRadius="0 10 10 10" Background="#c490ff" Padding="10 7" HorizontalAlignment="Right" Margin="0 5 0 0" FlowDirection="LeftToRight">
+    <Border CornerRadius="10 0 10 10" Background="#c490ff" Padding="12" HorizontalAlignment="Right" Margin="0 5 0 0" FlowDirection="RightToLeft">
         <StackPanel Orientation="Horizontal">
-            <Button Width="30" Height="30" Background="#900e9c" BorderThickness=".75" x:Name="AttachFile" Click="AttachFile_Click" BorderBrush="#4f0057">
+            <Button Width="40" Height="40" Background="#900e9c" BorderThickness=".75" x:Name="AttachFile" Click="AttachFile_Click" BorderBrush="#4f0057">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="20"/>

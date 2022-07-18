@@ -22,6 +22,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TransferFileClient\TransferFileClient.csproj" />
+    <ProjectReference Include="..\TransferFile\TransferFileServer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Resources\Person.png" />
     <Resource Include="Resources\Person2.png" />
   </ItemGroup>
