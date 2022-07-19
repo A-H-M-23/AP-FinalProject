@@ -23,5 +23,30 @@ namespace UI
         {
             InitializeComponent();
         }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnNewAccount_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnProfilePhoto_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnLogOut_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
