@@ -8,12 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Login.jpg" />
     <None Remove="Resources\MR.Clone.png" />
     <None Remove="Resources\Person.png" />
     <None Remove="Resources\Person2.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Login.jpg" />
     <Resource Include="Resources\MR.Clone.png" />
   </ItemGroup>
 
@@ -22,8 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TransferFileClient\TransferFileClient.csproj" />
-    <ProjectReference Include="..\TransferFile\TransferFileServer.csproj" />
+    <ProjectReference Include="..\TransferFile\TransferFile.csproj" />
   </ItemGroup>
 
   <ItemGroup>

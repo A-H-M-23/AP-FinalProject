@@ -5,9 +5,7 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI", "UI\UI.csproj", "{2FB0B70A-E563-42C0-A404-556E5CE3CC49}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransferFileServer", "TransferFile\TransferFileServer.csproj", "{B20A12DD-BEAA-435C-8B3B-2597FABFFEE5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransferFileClient", "TransferFileClient\TransferFileClient.csproj", "{6FA9AA3A-74F0-46F9-A583-2DC62163DC0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransferFile", "TransferFile\TransferFile.csproj", "{B20A12DD-BEAA-435C-8B3B-2597FABFFEE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +21,6 @@ Global
 		{B20A12DD-BEAA-435C-8B3B-2597FABFFEE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B20A12DD-BEAA-435C-8B3B-2597FABFFEE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B20A12DD-BEAA-435C-8B3B-2597FABFFEE5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6FA9AA3A-74F0-46F9-A583-2DC62163DC0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6FA9AA3A-74F0-46F9-A583-2DC62163DC0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6FA9AA3A-74F0-46F9-A583-2DC62163DC0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6FA9AA3A-74F0-46F9-A583-2DC62163DC0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

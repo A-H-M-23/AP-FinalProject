@@ -9,9 +9,6 @@ using TransferFile;
 
 namespace UI.UserControls
 {
-    /// <summary>
-    /// Interaction logic for MainPanel.xaml
-    /// </summary>
     public partial class MainPanel : UserControl
     {
         public MainPanel()
