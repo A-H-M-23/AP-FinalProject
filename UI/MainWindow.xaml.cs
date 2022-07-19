@@ -13,13 +13,18 @@ namespace UI
     public partial class MainWindow : Window
     {
         public static bool IsClient = false;
+
+        public static int UserID { get; set; }
+        public static string Username { get; set; }
         public MainWindow()
         {
             InitializeComponent();
             WelcomePanel welcome = new WelcomePanel();
             MainPanel main = new MainPanel();
+            Login login = new Login();
             MainPage.Children.Add(main);
             MainPage.Children.Add(welcome);
+            MainPage.Children.Add(login);
             init();
         }
 

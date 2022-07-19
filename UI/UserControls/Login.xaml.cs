@@ -1,28 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Business;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using UI.UserControls;
 
 namespace UI
 {
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
     /// </summary>
-    public partial class LoginWindow : UserControl
+    public partial class Login : UserControl
     {
-        public static int UserID = -1;
-        public static string NameOfUser;
-        public LoginWindow()
+        public Login()
         {
             InitializeComponent();
         }
@@ -109,22 +99,8 @@ namespace UI
                     if (temp.HashPassword == PasswordSecurity.HashPassword(txtPassword.Text))
                     {
                         MessageBox.Show($"Welcome {temp.FirstName + " " + temp.LastName}");
-                        UserID = temp.ID;
-                        NameOfUser = temp.FirstName + " " + temp.LastName;
-                        DialogResult = true;
-                    }
-                    else
-                        MessageBox.Show("Wrong Password! Please Check Your Password");
-                }
-                else if (AdminRepository.adminsList.Exists(admin => admin.UserName == txtUserName.Text))
-                {
-                    User temp = AdminRepository.adminsList.Where(admin => admin.UserName == txtUserName.Text).FirstOrDefault();
-                    if (temp.HashPassword == PasswordSecurity.HashPassword(txtPassword.Text))
-                    {
-                        MessageBox.Show($"Welcome {temp.FirstName + " " + temp.LastName}");
-                        UserID = temp.ID;
-                        NameOfUser = temp.FirstName + " " + temp.LastName;
-                        DialogResult = true;
+                        MainWindow.UserID = temp.ID;
+                        MainWindow.Username = temp.FirstName + " " + temp.LastName;
                     }
                     else
                         MessageBox.Show("Wrong Password! Please Check Your Password");
@@ -143,7 +119,6 @@ namespace UI
         private void btnNewAccount_Click(object sender, RoutedEventArgs e)
         {
             NewAccountWindow newAccountWindow = new NewAccountWindow();
-            newAccountWindow.Owner = this;
             newAccountWindow.ShowDialog();
             if (newAccountWindow.DialogResult == true)
             {
