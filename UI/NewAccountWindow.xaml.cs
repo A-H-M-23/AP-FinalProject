@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Business;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,36 +20,240 @@ namespace UI
     /// <summary>
     /// Interaction logic for NewAccountWindow.xaml
     /// </summary>
-    public partial class NewAccountWindow : Window
+    public partial class NewAccountWindow : System.Windows.Window
     {
+        public static int Operation = 0;
+        public static int USERID = -1;
+        User user;
+        private static string imagepath = "/Resources/Person.png";
+        CustomerRepository repository;
         public NewAccountWindow()
         {
             InitializeComponent();
+            user = new User();
+            repository = new CustomerRepository();
+        }
+
+        /// <summary>
+        /// This Method Is For Set Customers Profile Pictures .
+        /// </summary>
+        public void ProfilePictureSet()
+        {
+            string ImageName = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(ProfilePhoto.Source.ToString());
+            string path = "./Images/Profiles/";
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+            string dispath = path + ImageName;
+            user.ProfilePhoto = dispath;
+            var encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create((BitmapSource)ProfilePhoto.Source));
+            using (FileStream stream = new FileStream(dispath, FileMode.Create))
+                encoder.Save(stream);
+        }
+
+        /// <summary>
+        /// This Method Is To Have No Null Inputs Or All Fields Are Filled .
+        /// </summary>
+        /// <returns>If All Fields Are Filled Return True And Else Return False</returns>
+        public bool NullInputs()
+        {
+            if (txtFirstName.Text != "")
+            {
+                if (txtLastName.Text != "")
+                {
+                    if (txtUserName.Text != "")
+                    {
+                        if (txtEmailAddress.Text != "")
+                        {
+                            if (txtPhoneNumber.Text != "")
+                            {
+                                if (txtPassword.Text != "")
+                                {
+                                            if (btnMale.IsChecked == true || btnFemale.IsChecked == true)
+                                                return true;
+                                            else
+                                            {
+                                                MessageBox.Show("لطفا جنسیت را انتخاب کنید");
+                                                return false;
+                                            }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("لطفا کلمه عبور خود را وارد کنید");
+                                    return false;
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("لطفا شماره تلفن همراه خود را وارد کنید");
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("لطفا ایمیل خود را وارد کنید");
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("لطفا نام کاربری خود را وارد کنید");
+                        return false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("لطفا نام خانوادگی خود را وارد کنید");
+                    return false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("لطفا نام خود را وارد کنید");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// This Methd Is For Validation The Input Of Fields .
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnNewAccount_Click(object sender, RoutedEventArgs e)
+        {
+            if (Operation != 1)
+            {
+                if (NullInputs())
+                {
+                    if (Password.PasswordSecurity(txtPassword.Text))
+                    {
+                        if (Email.EmailCheck(txtEmailAddress.Text))
+                        {
+                            user.FirstName = txtFirstName.Text;
+                            user.LastName = txtLastName.Text;
+                            user.UserName = txtUserName.Text;
+                            user.PhoneNumber = txtPhoneNumber.Text;
+                            user.Email = txtEmailAddress.Text;
+                            user.HashPassword = PasswordSecurity.HashPassword(txtPassword.Text);
+                            user.Address = txtHomeAddress.Text;
+                            user.Gender = (btnMale.IsChecked == true) ? GenderType.Male : GenderType.Female;
+                            ProfilePictureSet();
+                            if (Operation == 0)
+                            {
+                                    user.ID = CustomerRepository.customersList.Count();
+                                repository.WriteJson(user);
+                            }
+                            if (Operation == 2)
+                                repository.Update(user);
+                            DialogResult = true;
+                        }
+                        else
+                            MessageBox.Show("ایمیل نامعتبر است لطفا ایمیل خود را به دقت وارد کنید");
+                    }
+                    else
+                        MessageBox.Show("امنیت رمز پایین است \n کلمه عبور باید ترکیبی از حروف بزرگ،کوچک،اعداد،سمبل ها\n و به طول بیش از 6 کاراکتر باشد");
+                }
+            }
+            else
+                DialogResult = false;
+        }
+
+        /// <summary>
+        /// This Method Is For Selecting The User's Profile Picture .
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnProfilePhoto_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog Dialog = new OpenFileDialog();
+            if (Dialog.ShowDialog() == true)
+            {
+                imagepath = Dialog.FileName;
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(imagepath);
+                bitmap.EndInit();
+                ProfilePhoto.Source = bitmap;
+            }
+        }
+
+        /// <summary>
+        /// This Method Is To Specify The Role Of The User (Admin Or Customer)
+        /// And Validate The Accessibility for Each Role .
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (Operation != 1)
+            {
+                btnDelete.Visibility = Visibility.Hidden;
+                btnEdit.Visibility = Visibility.Hidden;
+                btnLogOut.Visibility = Visibility.Hidden;
+            }
+            if (Operation == 2)
+            {
+                btnNewAccount.Content = "ویرایش";
+                TopLabel.Text = "ویرایش حساب کاربری";
+            }
+            if (Operation != 0)
+            {
+                    user = CustomerRepository.customersList.FirstOrDefault(c => c.ID == USERID);
+                btnNewAccount.Content = "تائید";
+                txtFirstName.Text = user.FirstName;
+                txtLastName.Text = user.LastName;
+                txtUserName.Text = user.UserName;
+                txtEmailAddress.Text = user.Email;
+                txtPhoneNumber.Text = user.PhoneNumber;
+                if (user.Gender == GenderType.Male)
+                    btnMale.IsChecked = true;
+                else
+                    btnFemale.IsChecked = true;
+                txtHomeAddress.Text = user.Address;
+                var convertor = new ImageSourceConverter();
+                ProfilePhoto.Source = (ImageSource)convertor.ConvertFromString(user.ProfilePhoto);
+            }
+            if (Operation == 1)
+            {
+                TopLabel.Text = "اطلاعات حساب کاربری";
+                PasswordTab.Visibility = Visibility.Hidden;
+                btnProfilePhoto.Visibility = Visibility.Hidden;
+                txtFirstName.IsReadOnly = true;
+                txtLastName.IsReadOnly = true;
+                txtUserName.IsReadOnly = true;
+                txtEmailAddress.IsReadOnly = true;
+                txtPhoneNumber.IsReadOnly = true;
+                btnMale.IsEnabled = false;
+                btnFemale.IsEnabled = false;
+                txtHomeAddress.IsReadOnly = true;
+            }
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            if (MessageBox.Show($"{user.FirstName} {user.LastName} آیا از حذف حساب کاربری خود اطمینان دارید ؟", "حذف حساب", MessageBoxButton.YesNo, MessageBoxImage.Error) == MessageBoxResult.Yes)
+                repository.Delete(user);
+            MainWindow mainWindow = new MainWindow();
+            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            Application.Current.Shutdown();
+            mainWindow.ShowDialog();
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void btnNewAccount_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnProfilePhoto_Click(object sender, RoutedEventArgs e)
-        {
-
+            NewAccountWindow accountWindow = new NewAccountWindow();
+            NewAccountWindow.USERID = user.ID;
+            NewAccountWindow.Operation = 2;
+            this.Close();
+            accountWindow.ShowDialog();
         }
 
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow mainWindow = new MainWindow();
+            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            Application.Current.Shutdown();
+            mainWindow.ShowDialog();
         }
     }
 }
