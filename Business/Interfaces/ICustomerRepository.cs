@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business
+namespace Business.Interfaces
 {
     /// <summary>
     /// This Interface Is For The Repository Customer ,

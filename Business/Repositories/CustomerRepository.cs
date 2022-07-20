@@ -1,4 +1,6 @@
-﻿namespace Business
+﻿using Business.Interfaces;
+
+namespace Business.Repositories
 {
     public class CustomerRepository : ICustomerRepository
     {

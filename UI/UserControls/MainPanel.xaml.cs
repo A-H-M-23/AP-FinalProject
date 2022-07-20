@@ -1,16 +1,19 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using TransferFile;
 
 namespace UI.UserControls
 {
     public partial class MainPanel : UserControl
     {
+        private bool LightTheme = true;
         public MainPanel()
         {
             InitializeComponent();
@@ -39,7 +42,7 @@ namespace UI.UserControls
             Listen.Stop();
         }
 
-        private void AddMessageToUi(object o)
+        public void AddMessageToUi(object o)
         {
             if (!Dispatcher.CheckAccess())
             {
@@ -80,6 +83,24 @@ namespace UI.UserControls
                         AddMessageToUi(fileSend);
                     }
                 });
+            }
+        }
+
+        private void LogOut_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var currentExecutablePath = Process.GetCurrentProcess().MainModule.FileName;
+            Listen.Stop();
+            Process.Start(currentExecutablePath);
+            Application.Current.Shutdown();
+        }
+
+        private void btnTheme_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (LightTheme)
+            {
+                Background.Background = new SolidColorBrush(Color.FromRgb(48 , 48 , 48));
+                ContainerScroll.Background = new SolidColorBrush(Color.FromRgb(48, 48, 48));
+                Page.Background = new SolidColorBrush(Color.FromRgb(48, 48, 48));
             }
         }
     }

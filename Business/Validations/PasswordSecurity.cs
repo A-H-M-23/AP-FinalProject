@@ -5,18 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 
-namespace Business
+namespace Business.Validations
 {
     public static class PasswordSecurity
     {
-        public static String HashPassword(String value)
+        public static string HashPassword(string value)
         {
             StringBuilder Sb = new StringBuilder();
-            using (SHA256 hash = SHA256Managed.Create())
+            using (SHA256 hash = SHA256.Create())
             {
                 Encoding enc = Encoding.UTF8;
-                Byte[] result = hash.ComputeHash(enc.GetBytes(value));
-                foreach (Byte b in result)
+                byte[] result = hash.ComputeHash(enc.GetBytes(value));
+                foreach (byte b in result)
                     Sb.Append(b.ToString("x2"));
             }
             return Sb.ToString();

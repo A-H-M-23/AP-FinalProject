@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Business;
+using Microsoft.Win32;
 using System;
 using System.IO;
 using System.Net;
@@ -12,6 +13,9 @@ namespace UI
 {
     public partial class MainWindow : Window
     {
+        WelcomePanel welcome;
+        MainPanel main;
+        Login login;
         public static bool IsClient = false;
 
         public static int UserID { get; set; }
@@ -19,9 +23,10 @@ namespace UI
         public MainWindow()
         {
             InitializeComponent();
-            WelcomePanel welcome = new WelcomePanel();
-            MainPanel main = new MainPanel();
-            Login login = new Login();
+            ReadJSON.User();
+            welcome = new WelcomePanel();
+            main = new MainPanel();
+            login = new Login();
             MainPage.Children.Add(main);
             MainPage.Children.Add(welcome);
             MainPage.Children.Add(login);
@@ -49,7 +54,7 @@ namespace UI
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if(e.ChangedButton == MouseButton.Left)
+            if (e.ChangedButton == MouseButton.Left)
             {
                 this.DragMove();
             }

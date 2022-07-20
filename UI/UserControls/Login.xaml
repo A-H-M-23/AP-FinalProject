@@ -45,7 +45,7 @@
                             <TextBox BorderThickness="0 0 0 1" Padding="5" Background="{x:Null}" Margin="10 30 10 5" Text="Username" Foreground="Gray" FontSize="15" FontWeight="Bold" x:Name="txtUserName" GotFocus="txtUserName_GotFocus" LostFocus="txtUserName_LostFocus" TextChanged="txtUserName_TextChanged"/>
                             <TextBox BorderThickness="0 0 0 1" Padding="5" Background="{x:Null}" Margin="10 5 10 25" Text="Password" Foreground="Gray" FontSize="15" FontWeight="Bold" x:Name="txtPassword" GotFocus="txtPassword_GotFocus" LostFocus="txtPassword_LostFocus" TextChanged="txtPassword_TextChanged"/>
 
-                            <Button Name="btnLogin" Click="btnLogin_Click" Content="Login" Margin="0 0 0 10" HorizontalAlignment="Center" Padding="40 5 40 10" Background="#00b1cc" FontWeight="Bold" FontSize="22" BorderBrush="{x:Null}" Foreground="White"  Style="{x:Null}">
+                            <Button Name="btnLogin" Click="btnLogin_Click" Content="Login" Margin="0 0 0 10" HorizontalAlignment="Center" Padding="40 5 40 10" Background="#6146e3" FontWeight="Bold" FontSize="22" BorderBrush="{x:Null}" Foreground="White"  Style="{x:Null}">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="10"/>

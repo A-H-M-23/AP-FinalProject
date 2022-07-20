@@ -22,8 +22,8 @@
                 </Grid.RowDefinitions>
                 <TextBlock Text="Please Select Your Action" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 10" FontSize="20" Foreground="White"/>
                 <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
-                    <uc:AccountMenuButton Title="Send" GradientColor1="#fba0cb" GradientColor2="#fe7094" x:Name="btnSend" MouseDoubleClick="btnSend_MouseDoubleClick"/>
-                    <uc:AccountMenuButton Title="Receive" GradientColor1="#e5db6f" GradientColor2="#e2c649" x:Name="btnReceive" MouseDoubleClick="btnReceive_MouseDoubleClick"/>
+                    <uc:AccountMenuButton Title="Send" GradientColor1="#fba0cb" GradientColor2="#fe7094" x:Name="btnSend" MouseUp="btnSend_MouseUp" MouseDoubleClick="btnSend_MouseDoubleClick"/>
+                    <uc:AccountMenuButton Title="Receive" GradientColor1="#e5db6f" GradientColor2="#e2c649" x:Name="btnReceive" MouseUp="btnReceive_MouseUp" MouseDoubleClick="btnReceive_MouseDoubleClick"/>
                 </StackPanel>
             </Grid>
         </Grid>

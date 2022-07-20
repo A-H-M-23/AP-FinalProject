@@ -30,6 +30,14 @@ namespace UI.UserControls
             set { SetValue(UsernameProperty, value); }
         }
 
+        public static readonly DependencyProperty AddressProperty = DependencyProperty.Register("Address", typeof(string), typeof(MyFileSend));
+
+        public string Address
+        {
+            get { return (string)GetValue(AddressProperty); }
+            set { SetValue(AddressProperty, value); }
+        }
+
         private void AttachFile_Click(object sender, RoutedEventArgs e)
         {
 

@@ -1,4 +1,6 @@
 ﻿using Business;
+using Business.Repositories;
+using Business.Validations;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -63,53 +65,54 @@ namespace UI
                 {
                     if (txtUserName.Text != "")
                     {
-                        if (txtEmailAddress.Text != "")
+
+                        if (txtPassword.Text != "")
                         {
-                            if (txtPhoneNumber.Text != "")
+                            if (txtEmailAddress.Text != "")
                             {
-                                if (txtPassword.Text != "")
+                                if (txtPhoneNumber.Text != "")
                                 {
-                                            if (btnMale.IsChecked == true || btnFemale.IsChecked == true)
-                                                return true;
-                                            else
-                                            {
-                                                MessageBox.Show("لطفا جنسیت را انتخاب کنید");
-                                                return false;
-                                            }
+                                    if (btnMale.IsChecked == true || btnFemale.IsChecked == true)
+                                        return true;
+                                    else
+                                    {
+                                        MessageBox.Show("Please Select Your Gender");
+                                        return false;
+                                    }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("لطفا کلمه عبور خود را وارد کنید");
+                                    MessageBox.Show("Please Enter Your PhoneNumber");
                                     return false;
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("لطفا شماره تلفن همراه خود را وارد کنید");
+                                MessageBox.Show("Please Enter Your Email");
                                 return false;
                             }
                         }
                         else
                         {
-                            MessageBox.Show("لطفا ایمیل خود را وارد کنید");
+                            MessageBox.Show("Please Enter Your Password");
                             return false;
                         }
                     }
                     else
                     {
-                        MessageBox.Show("لطفا نام کاربری خود را وارد کنید");
+                        MessageBox.Show("Please Enter Your UserName");
                         return false;
                     }
                 }
                 else
                 {
-                    MessageBox.Show("لطفا نام خانوادگی خود را وارد کنید");
+                    MessageBox.Show("Please Enter Your LastName");
                     return false;
                 }
             }
             else
             {
-                MessageBox.Show("لطفا نام خود را وارد کنید");
+                MessageBox.Show("Please Enter Your Name");
                 return false;
             }
         }
@@ -140,7 +143,7 @@ namespace UI
                             ProfilePictureSet();
                             if (Operation == 0)
                             {
-                                    user.ID = CustomerRepository.customersList.Count();
+                                user.ID = CustomerRepository.customersList.Count();
                                 repository.WriteJson(user);
                             }
                             if (Operation == 2)
@@ -148,10 +151,10 @@ namespace UI
                             DialogResult = true;
                         }
                         else
-                            MessageBox.Show("ایمیل نامعتبر است لطفا ایمیل خود را به دقت وارد کنید");
+                            MessageBox.Show("Invalid Email !! Please Check Your Email Address");
                     }
                     else
-                        MessageBox.Show("امنیت رمز پایین است \n کلمه عبور باید ترکیبی از حروف بزرگ،کوچک،اعداد،سمبل ها\n و به طول بیش از 6 کاراکتر باشد");
+                        MessageBox.Show("Your Password is Unsafe\nPassword Should Be at least 8 Charachter and has small , capital letters and Symbols also Numbers");
                 }
             }
             else
@@ -193,12 +196,12 @@ namespace UI
             }
             if (Operation == 2)
             {
-                btnNewAccount.Content = "ویرایش";
-                TopLabel.Text = "ویرایش حساب کاربری";
+                btnNewAccount.Content = "Edit";
+                TopLabel.Text = "Edit Account";
             }
             if (Operation != 0)
             {
-                    user = CustomerRepository.customersList.FirstOrDefault(c => c.ID == USERID);
+                user = CustomerRepository.customersList.FirstOrDefault(c => c.ID == USERID);
                 btnNewAccount.Content = "تائید";
                 txtFirstName.Text = user.FirstName;
                 txtLastName.Text = user.LastName;
@@ -215,7 +218,7 @@ namespace UI
             }
             if (Operation == 1)
             {
-                TopLabel.Text = "اطلاعات حساب کاربری";
+                TopLabel.Text = "Account Info";
                 PasswordTab.Visibility = Visibility.Hidden;
                 btnProfilePhoto.Visibility = Visibility.Hidden;
                 txtFirstName.IsReadOnly = true;
@@ -231,7 +234,7 @@ namespace UI
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show($"{user.FirstName} {user.LastName} آیا از حذف حساب کاربری خود اطمینان دارید ؟", "حذف حساب", MessageBoxButton.YesNo, MessageBoxImage.Error) == MessageBoxResult.Yes)
+            if (MessageBox.Show($"{user.FirstName} {user.LastName} Are You Sure Delete Your Account ?", "Delete Account", MessageBoxButton.YesNo, MessageBoxImage.Error) == MessageBoxResult.Yes)
                 repository.Delete(user);
             MainWindow mainWindow = new MainWindow();
             System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);

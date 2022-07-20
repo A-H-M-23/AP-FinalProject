@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
 
         <!--background-->
-        <Border CornerRadius="0 20 20 0" Background="#f8f7fc" Grid.Column="2" Grid.ColumnSpan="2" Margin="0 0 0 0 " Grid.RowSpan="2"/>
+        <Border CornerRadius="0 20 20 0" x:Name="Background" Background="#f8f7fc" Grid.Column="2" Grid.ColumnSpan="2" Margin="0 0 0 0 " Grid.RowSpan="2"/>
         <!-- left menu1-->
         <Border CornerRadius="20" Grid.RowSpan="2" Panel.ZIndex="2" Background="#6145e3">
             <!--App Tile-->
@@ -66,8 +66,8 @@
 
                 <!--Bottom Menu Buttons-->
                 <StackPanel Margin="25 0 0 40" VerticalAlignment="Bottom">
-                    <uc:MenuButtons Title="Setting" Icon="Cog"/>
-                    <uc:MenuButtons Title="LogOut" Icon="Logout" x:Name="LogOut"/>
+                    <uc:MenuButtons Title="Theme" Icon="ThemeLightDark" x:Name="btnTheme" MouseUp="btnTheme_MouseUp"/>
+                    <uc:MenuButtons Title="LogOut" Icon="Logout" x:Name="LogOut" MouseUp="LogOut_MouseUp"/>
                 </StackPanel>
 
             </Grid>
@@ -111,7 +111,7 @@
         </Grid>
         <!--Chat Section-->
         <Border CornerRadius="15" Background="#ffffff" Grid.Column="3" Grid.Row="1" Margin="0 0 30 30" ClipToBounds="True">
-            <Grid>
+            <Grid x:Name="Page">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
@@ -138,7 +138,7 @@
                 <!--Chats-->
 
                     <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto" Grid.Row="1" Margin="20 10 20 20" x:Name="ContainerScroll">
-                        <StackPanel x:Name="Container" VerticalAlignment="Bottom"/>
+                        <StackPanel x:Name="Container" VerticalAlignment="Bottom" />
                     </ScrollViewer>
                     <!--<uc:Chat_Seprator Title="Yesterday"/>
 

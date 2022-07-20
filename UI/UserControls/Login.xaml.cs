@@ -1,9 +1,10 @@
 ﻿using Business;
+using Business.Repositories;
+using Business.Validations;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using UI.UserControls;
 
 namespace UI
 {
@@ -101,6 +102,7 @@ namespace UI
                         MessageBox.Show($"Welcome {temp.FirstName + " " + temp.LastName}");
                         MainWindow.UserID = temp.ID;
                         MainWindow.Username = temp.FirstName + " " + temp.LastName;
+                        (this.Parent as Grid).Children.Remove(this);
                     }
                     else
                         MessageBox.Show("Wrong Password! Please Check Your Password");

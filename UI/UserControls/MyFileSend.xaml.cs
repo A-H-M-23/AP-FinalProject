@@ -33,7 +33,10 @@ namespace UI.UserControls
 
         private void AttachFile_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(Address);
+            using (FileStream fs = File.OpenRead(Address))
+            {
+                Process.Start(Address);
+            }
         }
     }
 }

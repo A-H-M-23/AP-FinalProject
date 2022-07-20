@@ -1,5 +1,8 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Sockets;
+using System.Threading;
+using UI.UserControls;
 
 namespace TransferFile
 {
@@ -29,16 +32,23 @@ namespace TransferFile
 
             new Thread(() =>
             {
+                //var client = socket.Accept();
+                //var fileInfo = ReceiverEngine.GetFileInfo(client);
+                //fileSend = new UserFileSend();
+                //fileSend.Username = fileInfo.FileName;
+                //fileSend.Address = System.AppDomain.CurrentDomain.BaseDirectory + @"Downloads\" + fileInfo.FileName;
+                //mainPanel = new MainPanel();
+                //mainPanel.AddMessageToUi(fileSend);
                 while (true)
                 {
                     try
                     {
-                        var client = socket.Accept();
+                        var clients = socket.Accept();
+
                         new Thread(() =>
                         {
-                            var fileInfo = ReceiverEngine.GetFileInfo(client);
+                            var fileInfo = ReceiverEngine.GetFileInfo(clients);
                             fileInfo.LoadData();
-
                         }).Start();
                     }
                     catch (Exception ex)

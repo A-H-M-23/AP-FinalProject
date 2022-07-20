@@ -1,4 +1,4 @@
-﻿namespace Business
+﻿namespace Business.Interfaces
 {
     public interface IFileContext<T> where T : class
     {

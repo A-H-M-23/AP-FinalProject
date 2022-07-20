@@ -22,6 +22,18 @@ namespace UI.UserControls
             InitializeComponent();
         }
 
+        private void btnSend_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow.IsClient = true;
+            (this.Parent as Grid).Children.Remove(this);
+        }
+
+        private void btnReceive_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow.IsClient = false;
+            (this.Parent as Grid).Children.Remove(this);
+        }
+
         private void btnSend_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             MainWindow.IsClient = true;
