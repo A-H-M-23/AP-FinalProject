@@ -23,13 +23,14 @@ namespace TransferFile
             {
                 while (networkStream.CanRead && (bytesRead = binaryReader.Read(buffer, 0, buffer.Length)) > 0)
                 {
-                    writer.Write(buffer, 0, bytesRead);
-                    writer.Flush();
+                    writer.Write(buffer, 0, bytesRead);//Write information
+                    writer.Flush();//Omit the information
                 }
             }
             Dispose();
         }
 
+        //Disconnect operation
         private void Dispose()
         {
             socket.Disconnect(false);

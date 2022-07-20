@@ -62,6 +62,7 @@ namespace UI
 
         bool IsMaximized = false;
 
+        //tuning the window
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ClickCount == 2)
@@ -81,12 +82,14 @@ namespace UI
             }
         }
 
+        //Close Button
         private void Exitbtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             Listen.Stop();
         }
 
+        //Function that send Ip & port . We can have Multiselect in App
         private void btnFileSelect_Click(object sender, RoutedEventArgs e)
         {
             IPAddress ipAddr = IPAddress.Parse("127.0.0.1");

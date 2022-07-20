@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 namespace UI.UserControls
 {
+    // A user control that use for Welcome panel(Begining Panel)
     public partial class WelcomePanel : UserControl
     {
         public WelcomePanel()
@@ -25,6 +26,7 @@ namespace UI.UserControls
         private void btnSend_MouseUp(object sender, MouseButtonEventArgs e)
         {
             MainWindow.IsClient = true;
+            //Remove
             (this.Parent as Grid).Children.Remove(this);
         }
 
@@ -34,6 +36,7 @@ namespace UI.UserControls
             (this.Parent as Grid).Children.Remove(this);
         }
 
+        //If double Click the btn Send Obj
         private void btnSend_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             MainWindow.IsClient = true;

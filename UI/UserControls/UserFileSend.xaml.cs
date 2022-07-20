@@ -24,6 +24,7 @@ namespace UI.UserControls
 
         public static readonly DependencyProperty UsernameProperty = DependencyProperty.Register("Username", typeof(string), typeof(UserChat));
 
+        //User Name
         public string Username
         {
             get { return (string)GetValue(UsernameProperty); }
@@ -32,6 +33,7 @@ namespace UI.UserControls
 
         public static readonly DependencyProperty AddressProperty = DependencyProperty.Register("Address", typeof(string), typeof(MyFileSend));
 
+        //Adress of File
         public string Address
         {
             get { return (string)GetValue(AddressProperty); }

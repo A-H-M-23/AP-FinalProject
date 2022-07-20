@@ -6,6 +6,7 @@ namespace UI.UserControls
 {
     public partial class UserChat : UserControl
     {
+        //Initialize
         public UserChat()
         {
             InitializeComponent();
@@ -21,6 +22,7 @@ namespace UI.UserControls
 
         public static readonly DependencyProperty ImageProperty = DependencyProperty.Register("Image", typeof(ImageSource), typeof(UserChat));
 
+        //Get & Set of Image Source
         public ImageSource Image
         {
             get { return (ImageSource)GetValue(ImageProperty); }

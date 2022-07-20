@@ -11,6 +11,7 @@ namespace TransferFile
         private static Socket socket;
         private static bool IsStop;
 
+        //Socket Functions
         public static void Start(int port)
         {
             if (socket != null)
@@ -76,6 +77,8 @@ namespace TransferFile
         //    return lvi;
         //}
 
+
+        //Stop the Socket
         public static void Stop()
         {
             IsStop = true;

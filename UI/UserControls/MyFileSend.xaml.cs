@@ -17,7 +17,8 @@ namespace UI.UserControls
 
         public static readonly DependencyProperty UsernameProperty = DependencyProperty.Register("Username", typeof(string), typeof(MyFileSend));
 
-        public string Username
+        //Get & Set the name
+        public string Username 
         {
             get { return (string)GetValue(UsernameProperty); }
             set { SetValue(UsernameProperty, value); }
@@ -25,13 +26,15 @@ namespace UI.UserControls
 
         public static readonly DependencyProperty AddressProperty = DependencyProperty.Register("Address", typeof(string), typeof(MyFileSend));
 
+        // Get & Set the Address of File
         public string Address
         {
             get { return (string)GetValue(AddressProperty); }
             set { SetValue(AddressProperty, value); }
         }
 
-        private void AttachFile_Click(object sender, RoutedEventArgs e)
+        //Open File With Click
+        private void AttachFile_Click(object sender, RoutedEventArgs e) 
         {
             using (FileStream fs = File.OpenRead(Address))
             {

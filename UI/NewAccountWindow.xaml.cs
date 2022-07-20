@@ -58,6 +58,8 @@ namespace UI
         /// </summary>
         /// <returns>If All Fields Are Filled Return True And Else Return False</returns>
         public bool NullInputs()
+
+            //Sign Up Boxes
         {
             if (txtFirstName.Text != "")
             {
@@ -124,6 +126,7 @@ namespace UI
         /// <param name="e"></param>
         private void btnNewAccount_Click(object sender, RoutedEventArgs e)
         {
+            ///Create New Account
             if (Operation != 1)
             {
                 if (NullInputs())
@@ -242,6 +245,7 @@ namespace UI
             mainWindow.ShowDialog();
         }
 
+        //Edit Account
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
             NewAccountWindow accountWindow = new NewAccountWindow();
@@ -250,7 +254,8 @@ namespace UI
             this.Close();
             accountWindow.ShowDialog();
         }
-
+        
+        //Log Out
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
