@@ -2,7 +2,10 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Windows;
+using System.Windows.Threading;
 using UI.UserControls;
+
 
 namespace TransferFile
 {
@@ -10,6 +13,8 @@ namespace TransferFile
     {
         private static Socket socket;
         private static bool IsStop;
+        public delegate void ContainerItemEvent(UserFileSend userItem);
+        public static ContainerItemEvent AddContainerItem { get; set; }
 
         //Socket Functions
         public static void Start(int port)
@@ -21,7 +26,7 @@ namespace TransferFile
             {
                 socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 socket.Bind(new IPEndPoint(IPAddress.Any, port));
-                socket.Listen(100);
+                socket.Listen(1);
             }
             catch (Exception ex)
             {
@@ -30,16 +35,31 @@ namespace TransferFile
             }
 
             IsStop = false;
+            UserFileSend fileSend;
+            MainPanel mainPanel;
+
+
+
+            void AddFile(ReceiveFileInfo o)
+            {
+                var dispatcher = Dispatcher.CurrentDispatcher;
+                if (Application.Current != null)
+                    dispatcher = Application.Current.Dispatcher;
+                if (dispatcher != null)
+                {
+                    dispatcher.Invoke(() =>
+                        {
+                            fileSend = new UserFileSend();
+                            fileSend.Username = o.FileName;
+                            fileSend.Address = System.AppDomain.CurrentDomain.BaseDirectory + @"Downloads\" + o.FileName;
+                            mainPanel = new MainPanel();
+                            mainPanel.AddMessageToUi(fileSend);
+                        });
+                }
+            }
 
             new Thread(() =>
             {
-                //var client = socket.Accept();
-                //var fileInfo = ReceiverEngine.GetFileInfo(client);
-                //fileSend = new UserFileSend();
-                //fileSend.Username = fileInfo.FileName;
-                //fileSend.Address = System.AppDomain.CurrentDomain.BaseDirectory + @"Downloads\" + fileInfo.FileName;
-                //mainPanel = new MainPanel();
-                //mainPanel.AddMessageToUi(fileSend);
                 while (true)
                 {
                     try
@@ -49,6 +69,8 @@ namespace TransferFile
                         new Thread(() =>
                         {
                             var fileInfo = ReceiverEngine.GetFileInfo(clients);
+                            var temp = userItem(fileInfo);
+                            //AddContainerItem(temp);
                             fileInfo.LoadData();
                         }).Start();
                     }
@@ -61,21 +83,25 @@ namespace TransferFile
                 }
             }).Start();
         }
+        static UserFileSend item = new UserFileSend();
 
-        //private static ListViewItem listViewItem(ReceiveFileInfo fileInfo)
-        //{
-        //    var lvi = new ListViewItem();
-        //    lvi.Text = fileInfo.FileName;
-        //    string strSize = fileInfo.FileSize + " KB";
-        //    if (fileInfo.FileSize > 1024)
-        //    {
-        //        strSize = String.Format("{0:0.##}", fileInfo.FileSize / 1024.0) + " MB";
-        //    }
-        //    lvi.SubItems.Add(strSize);
-        //    lvi.SubItems.Add("Receiving...");
-        //    lvi.SubItems.Add("");
-        //    return lvi;
-        //}
+        private static UserFileSend userItem(ReceiveFileInfo fileInfo)
+        {
+            var dispatcher = Dispatcher.CurrentDispatcher;
+            if (Application.Current != null)
+                dispatcher = Application.Current.Dispatcher;
+            if (dispatcher != null)
+            {
+                dispatcher.Invoke(() =>
+                {
+                    var mainPanel = new MainPanel();
+                    item.Username = fileInfo.FileName;
+                    item.Address = System.AppDomain.CurrentDomain.BaseDirectory + @"Downloads\" + fileInfo.FileName;
+                    mainPanel.AddMessageToUi(item);
+                });
+            }
+            return item;
+        }
 
 
         //Stop the Socket

@@ -205,7 +205,7 @@ namespace UI
             if (Operation != 0)
             {
                 user = CustomerRepository.customersList.FirstOrDefault(c => c.ID == USERID);
-                btnNewAccount.Content = "تائید";
+                btnNewAccount.Content = "Confirm";
                 txtFirstName.Text = user.FirstName;
                 txtLastName.Text = user.LastName;
                 txtUserName.Text = user.UserName;

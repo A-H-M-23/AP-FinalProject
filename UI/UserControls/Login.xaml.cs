@@ -121,6 +121,7 @@ namespace UI
         private void btnNewAccount_Click(object sender, RoutedEventArgs e)
         {
             NewAccountWindow newAccountWindow = new NewAccountWindow();
+            NewAccountWindow.Operation = 0;
             newAccountWindow.ShowDialog();
             if (newAccountWindow.DialogResult == true)
             {

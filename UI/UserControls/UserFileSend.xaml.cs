@@ -31,9 +31,9 @@ namespace UI.UserControls
             set { SetValue(UsernameProperty, value); }
         }
 
-        public static readonly DependencyProperty AddressProperty = DependencyProperty.Register("Address", typeof(string), typeof(MyFileSend));
+        public static readonly DependencyProperty AddressProperty = DependencyProperty.Register("Address", typeof(string), typeof(UserFileSend));
 
-        //Adress of File
+        //Address of File
         public string Address
         {
             get { return (string)GetValue(AddressProperty); }

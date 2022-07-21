@@ -98,7 +98,7 @@
                 <Button Style="{StaticResource textBoxButton}">
                     <Icon:PackIconMaterial Kind="BellOutline" Foreground="#88878e"/>
                 </Button>
-                <Button Style="{StaticResource textBoxButton}" Background="#e9e9e9">
+                <Button Style="{StaticResource textBoxButton}" Background="#e9e9e9" x:Name="btnAccount" Click="btnAccount_Click">
                     <Icon:PackIconMaterial Kind="AccountArrowLeftOutline" Foreground="#88878e"/>
                 </Button>
                 <Button Style="{StaticResource textBoxButton}">

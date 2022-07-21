@@ -101,7 +101,23 @@ namespace UI.UserControls
                 Background.Background = new SolidColorBrush(Color.FromRgb(48 , 48 , 48));
                 ContainerScroll.Background = new SolidColorBrush(Color.FromRgb(48, 48, 48));
                 Page.Background = new SolidColorBrush(Color.FromRgb(48, 48, 48));
+                LightTheme = false;
             }
+            else
+            {
+                LightTheme = true;
+                Background.Background = new SolidColorBrush(Color.FromRgb(248, 247, 252));
+                ContainerScroll.Background = new SolidColorBrush(SystemColors.WindowColor);
+                Page.Background = new SolidColorBrush(SystemColors.WindowColor);
+            }
+        }
+
+        private void btnAccount_Click(object sender, RoutedEventArgs e)
+        {
+            NewAccountWindow newAccountWindow = new NewAccountWindow();
+            NewAccountWindow.Operation = 1;
+            NewAccountWindow.USERID = MainWindow.UserID;
+            newAccountWindow.ShowDialog();
         }
     }
 }
