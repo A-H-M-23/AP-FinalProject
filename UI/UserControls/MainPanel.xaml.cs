@@ -79,7 +79,7 @@ namespace UI.UserControls
                         MyFileSend fileSend = new MyFileSend();
                         string[] Temp = fileName.Split(@"\");
                         fileSend.Username = Temp[Temp.Length - 1];
-                        fileSend.Address = System.AppDomain.CurrentDomain.BaseDirectory + @"Downloads\" + Temp[Temp.Length - 1];
+                        fileSend.Address = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory , "Downloads" , Temp[Temp.Length - 1]);
                         AddMessageToUi(fileSend);
                     }
                 });

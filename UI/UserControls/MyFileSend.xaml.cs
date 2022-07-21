@@ -1,7 +1,9 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace UI.UserControls
 {
@@ -36,10 +38,38 @@ namespace UI.UserControls
         //Open File With Click
         private void AttachFile_Click(object sender, RoutedEventArgs e) 
         {
-            using (FileStream fs = File.OpenRead(Address))
+            PlayFile($"{Address}");
+        }
+
+        WMPLib.WindowsMediaPlayer Player;
+
+        private void PlayFile(string url)
+        {
+            Player = new WMPLib.WindowsMediaPlayer();
+            Player.PlayStateChange +=
+                new WMPLib._WMPOCXEvents_PlayStateChangeEventHandler(Player_PlayStateChange);
+            Player.MediaError +=
+                new WMPLib._WMPOCXEvents_MediaErrorEventHandler(Player_MediaError);
+            Player.URL = url;
+            Player.openPlayer(url);
+        }
+
+        private void Player_PlayStateChange(int NewState)
+        {
+            if ((WMPLib.WMPPlayState)NewState == WMPLib.WMPPlayState.wmppsStopped)
             {
-                Process.Start(Address);
+                var currentExecutablePath = Process.GetCurrentProcess().MainModule.FileName;
+                Process.Start(currentExecutablePath);
+                Application.Current.Shutdown();
             }
+        }
+
+        private void Player_MediaError(object pMediaObject)
+        {
+            MessageBox.Show("Cannot play media file.");
+            var currentExecutablePath = Process.GetCurrentProcess().MainModule.FileName;
+            Process.Start(currentExecutablePath);
+            Application.Current.Shutdown();
         }
     }
 }
