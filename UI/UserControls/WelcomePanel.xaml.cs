@@ -21,32 +21,90 @@ namespace UI.UserControls
         public WelcomePanel()
         {
             InitializeComponent();
+            SetIP();
+        }
+
+        public static Task<List<string>> GetAllIpAsync()
+        {
+            List<string> list = new List<string>();
+            string myHost = System.Net.Dns.GetHostName();
+
+            System.Net.IPHostEntry myIPs = System.Net.Dns.GetHostEntry(myHost);
+
+            foreach (var item in myIPs.AddressList)
+            {
+                if (item.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                    list.Add(item.ToString());
+            }
+
+            return Task.FromResult(list);
+        }
+
+        async void SetIP()
+        {
+            var res = await GetAllIpAsync();
+            foreach (var item in res)
+            {
+                addressIP.Items.Add(new ComboBoxItem() { Content = item });
+            }
+            addressIP.SelectedIndex = 1;
         }
 
         private void btnSend_MouseUp(object sender, MouseButtonEventArgs e)
         {
             MainWindow.IsClient = true;
-            //Remove
-            (this.Parent as Grid).Children.Remove(this);
+            if (!(port.Text == "" || addressIP.SelectedValue == ""))
+            {
+                MainWindow.Port = port.Text;
+                MainWindow.AddressIP = addressIP.SelectedValue.ToString();
+                MainWindow.init();
+                (this.Parent as Grid).Children.Remove(this);
+            }
+            else
+                MessageBox.Show("Please Check Your Inputs !!!");
         }
 
         private void btnReceive_MouseUp(object sender, MouseButtonEventArgs e)
         {
             MainWindow.IsClient = false;
-            (this.Parent as Grid).Children.Remove(this);
+            if (!(port.Text == "" || addressIP.SelectedValue == ""))
+            {
+                MainWindow.Port = port.Text;
+                MainWindow.AddressIP = addressIP.SelectedValue.ToString();
+                MainWindow.init();
+                (this.Parent as Grid).Children.Remove(this);
+            }
+            else
+                MessageBox.Show("Please Check Your Inputs !!!");
         }
 
         //If double Click the btn Send Obj
         private void btnSend_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             MainWindow.IsClient = true;
-            (this.Parent as Grid).Children.Remove(this);
+            if (!(port.Text == "" || addressIP.SelectedValue == ""))
+            {
+                MainWindow.Port = port.Text;
+                MainWindow.AddressIP = addressIP.SelectedValue.ToString();
+                MainWindow.init();
+                (this.Parent as Grid).Children.Remove(this);
+            }
+            else
+                MessageBox.Show("Please Check Your Inputs !!!");
         }
 
         private void btnReceive_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             MainWindow.IsClient = false;
-            (this.Parent as Grid).Children.Remove(this);
+            if (!(port.Text == "" || addressIP.SelectedValue == ""))
+            {
+                MainWindow.Port = port.Text;
+                MainWindow.AddressIP = addressIP.SelectedValue.ToString();
+                MainWindow.init();
+                (this.Parent as Grid).Children.Remove(this);
+            }
+            else
+                MessageBox.Show("Please Check Your Inputs !!!");
         }
     }
 }

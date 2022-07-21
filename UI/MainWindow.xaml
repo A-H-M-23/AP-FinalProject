@@ -4,7 +4,7 @@
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:uc="clr-namespace:UI.UserControls"
         Height="830" Width="1250" ResizeMode="NoResize" Background="Transparent"
-        AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" Icon="/Resources/MR.Clone.png">
+        AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" Icon="/Resources/MR.Clone.png" Closing="Window_Closing">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooltoVis"/>

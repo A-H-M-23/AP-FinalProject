@@ -20,6 +20,8 @@ namespace UI
 
         public static int UserID { get; set; }
         public static string Username { get; set; }
+        public static string Port { get; set; }
+        public static string AddressIP { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -30,10 +32,9 @@ namespace UI
             MainPage.Children.Add(main);
             MainPage.Children.Add(welcome);
             MainPage.Children.Add(login);
-            init();
         }
 
-        private void init()
+        public static void init()
         {
             if (!Directory.Exists("Downloads"))
             {
@@ -43,7 +44,7 @@ namespace UI
             {
                 try
                 {
-                    Listen.Start(int.Parse("8070"));
+                    Listen.Start(int.Parse(Port));
                 }
                 catch (Exception ex)
                 {
@@ -106,6 +107,12 @@ namespace UI
                     new Thread(() => { Sender.Send(ipAddr, port, fileName); }).Start();
                 }
             }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this.Close();
+            Listen.Stop();
         }
     }
 }
