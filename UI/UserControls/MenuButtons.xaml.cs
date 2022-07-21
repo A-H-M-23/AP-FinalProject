@@ -25,6 +25,7 @@ namespace UI.UserControls
             InitializeComponent();
         }
 
+        //Get & Set the title of buttons
         public string Title
         {
             get { return (string)GetValue(TitleProperty); }

@@ -17,13 +17,6 @@ namespace UI.UserControls
         public static readonly DependencyProperty TitleProperty =
             DependencyProperty.Register("Title", typeof(string), typeof(AccountMenuButton));
         
-        public bool IsActive
-        {
-            get { return (bool)GetValue(IsActiveProperty); }
-            set { SetValue(IsActiveProperty, value); }
-        }
-        public static readonly DependencyProperty IsActiveProperty =
-            DependencyProperty.Register("IsActive", typeof(bool), typeof(AccountMenuButton));
         public Color GradientColor1
         {
             get { return (Color)GetValue(GradientColor1Property); }
