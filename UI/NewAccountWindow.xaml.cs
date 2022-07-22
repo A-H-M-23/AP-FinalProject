@@ -19,7 +19,7 @@ namespace UI
         public static int Operation = 0;
         public static int USERID = -1;
         User user;
-        private static string imagepath = "/Resources/Person.png";
+        private static string imagepath = "/Resources/Avatar.png";
         CustomerRepository repository;
         public NewAccountWindow()
         {
