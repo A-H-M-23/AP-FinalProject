@@ -1,9 +1,6 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
+﻿using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace UI.UserControls
 {
@@ -50,7 +47,6 @@ namespace UI.UserControls
                 new WMPLib._WMPOCXEvents_PlayStateChangeEventHandler(Player_PlayStateChange);
             Player.MediaError +=
                 new WMPLib._WMPOCXEvents_MediaErrorEventHandler(Player_MediaError);
-            Player.URL = url;
             Player.openPlayer(url);
         }
 

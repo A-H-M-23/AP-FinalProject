@@ -26,7 +26,7 @@ namespace TransferFile
             try
             {
                 socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                socket.Bind(new IPEndPoint(IPAddress.Any, port));
+                socket.Bind(new IPEndPoint(IPAddress.Parse(MainWindow.AddressIP), port));
                 socket.Listen(1);
             }
             catch (Exception ex)
@@ -70,7 +70,7 @@ namespace TransferFile
                         new Thread(() =>
                         {
                             var fileInfo = ReceiverEngine.GetFileInfo(clients);
-                            var temp = userItem(fileInfo);
+                            //UserItem(fileInfo);
                             //AddContainerItem(temp);
                             fileInfo.LoadData();
                         }).Start();
@@ -85,8 +85,7 @@ namespace TransferFile
             }).Start();
         }
         static UserFileSend item = new UserFileSend();
-
-        private static UserFileSend userItem(ReceiveFileInfo fileInfo)
+        private static void UserItem(ReceiveFileInfo fileInfo)
         {
             var dispatcher = Dispatcher.CurrentDispatcher;
             if (Application.Current != null)
@@ -101,9 +100,7 @@ namespace TransferFile
                     mainPanel.AddMessageToUi(item);
                 });
             }
-            return item;
         }
-
 
         //Stop the Socket
         public static void Stop()

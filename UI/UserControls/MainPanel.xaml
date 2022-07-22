@@ -4,7 +4,7 @@
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:uc="clr-namespace:UI.UserControls"
         Height="830" Width="1250">
-    
+
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooltoVis"/>
     </UserControl.Resources>
@@ -137,41 +137,42 @@
 
                 <!--Chats-->
 
-                    <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto" Grid.Row="1" Margin="20 10 20 20" x:Name="ContainerScroll">
-                        <StackPanel x:Name="Container" VerticalAlignment="Bottom" />
-                    </ScrollViewer>
-                    <!--<uc:Chat_Seprator Title="Yesterday"/>
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto" Grid.Row="1" Margin="20 10 20 20" x:Name="ContainerScroll">
+                    <StackPanel x:Name="Container" VerticalAlignment="Bottom" />
+                </ScrollViewer>
+                <!--<StackPanel Grid.Row="1">
+                    <uc:Chat_Seprator Title="Yesterday"/>
 
-                        <uc:UserChat Username="Maud Carson" Image="/Resources/Person.png"/>
+                    <uc:UserChat Username="Amirhossein Maleki" Image="/Resources/Person.png"/>
 
-                        <uc:Messagechat Color="#ff82a3" Message="Hello my friends"/>
+                    <uc:Messagechat Color="#ff82a3" Message="سلام بچه ها"/>
 
-                        <TextBlock Text="3:10 PM" Style="{StaticResource timeText}"/>
+                    <TextBlock Text="3:10 PM" Style="{StaticResource timeText}"/>
 
-                        <uc:MyMessageChat Message="Hi Maud, Are you ok?"/>
+                    <uc:MyMessageChat Message="سلام امیر ، خوبی ؟"/>
 
-                        <uc:MyMessageChat Message="Guys we have a plan to choose best way"/>
+                    <uc:MyMessageChat Message="بچه ها یه نقشه ای دارم برای این پروژه"/>
 
-                        <TextBlock Text="4:15 PM" Style="{StaticResource timeTextRight}"/>
+                    <TextBlock Text="4:15 PM" Style="{StaticResource timeTextRight}"/>
 
-                        <uc:UserChat Username="Russell Greene" Image="/Resources/Person.png"/>
+                    <uc:UserChat Username="Moein Rashidi" Image="/Resources/Person.png"/>
 
-                        <uc:Messagechat Color="#c490ff" Message="Can you share your opinion?"/>
+                    <uc:Messagechat Color="#c490ff" Message="تعریف کن ببینم"/>
 
-                        <TextBlock Text="6:39 PM" Style="{StaticResource timeText}"/>
+                    <TextBlock Text="6:39 PM" Style="{StaticResource timeText}"/>
 
-                        <uc:UserChat Username="Cole Strickland" Image="/Resources/Person2.png"/>
+                    <uc:UserChat Username="Mohammadreza Khodarahmi" Image="/Resources/Person.png"/>
 
-                        <uc:Messagechat Color="#68cfa3" Message="Yes Russell, just dont talk about it with others."/>
+                    <uc:Messagechat Color="#68cfa3" Message="باشه معین ولی با کسی راجبش حرف نزنی ها!!!"/>
 
-                        <uc:Messagechat Color="#68cfa3" Message="Our plan have a new tactics ..."/>
+                    <uc:Messagechat Color="#68cfa3" Message="برنامه رو با حسین ریختیم که الان توضیح میده"/>
 
-                        <TextBlock Text="3:25 PM" Style="{StaticResource timeText}"/>
+                    <TextBlock Text="3:25 PM" Style="{StaticResource timeText}"/>
 
-                        <uc:MyMessageChat Message="I'm waiting for Maud for comeback to the chat"/>
+                    <uc:MyMessageChat Message="منتظرم امیرحسین برگرده تا بگم"/>
 
-                        <TextBlock Text="3:26 PM" Style="{StaticResource timeTextRight}"/>-->
-
+                    <TextBlock Text="3:26 PM" Style="{StaticResource timeTextRight}"/>
+                </StackPanel>-->
 
                 <!--Bottom Message Section-->
                 <Grid Grid.Row="2" Margin="10 0">

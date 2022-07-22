@@ -1,5 +1,4 @@
 ﻿using Microsoft.Win32;
-using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
@@ -7,6 +6,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Threading;
 using TransferFile;
 
 namespace UI.UserControls
@@ -17,23 +17,6 @@ namespace UI.UserControls
         public MainPanel()
         {
             InitializeComponent();
-            init();
-        }
-
-        private void init()
-        {
-            if (!Directory.Exists("Downloads"))
-            {
-                Directory.CreateDirectory("Downloads");
-            }
-            try
-            {
-                Listen.Start(int.Parse("8070"));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
 
         private void Exitbtn_Click(object sender, RoutedEventArgs e)
@@ -44,9 +27,12 @@ namespace UI.UserControls
 
         public void AddMessageToUi(object o)
         {
-            if (!Dispatcher.CheckAccess())
+            var dispatcher = Dispatcher.CurrentDispatcher;
+            if (Application.Current != null)
+                dispatcher = Application.Current.Dispatcher;
+            if (!dispatcher.CheckAccess())
             {
-                Dispatcher.Invoke(() =>
+                dispatcher.Invoke(() =>
                 {
                     Container.Children.Add((UIElement)o);
                     ContainerScroll.ScrollToEnd();
@@ -62,8 +48,8 @@ namespace UI.UserControls
 
         private void btnFileSelect_Click(object sender, RoutedEventArgs e)
         {
-            IPAddress ipAddr = IPAddress.Parse("127.0.0.1");
-            int port = int.Parse("8070");
+            IPAddress ipAddr = IPAddress.Parse(MainWindow.AddressIP);
+            int port = int.Parse(MainWindow.Port);
 
             var file = new OpenFileDialog();
             file.Multiselect = true;
