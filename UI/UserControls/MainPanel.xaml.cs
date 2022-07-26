@@ -100,10 +100,54 @@ namespace UI.UserControls
 
         private void btnAccount_Click(object sender, RoutedEventArgs e)
         {
-            NewAccountWindow newAccountWindow = new NewAccountWindow();
-            NewAccountWindow.Operation = 1;
-            NewAccountWindow.USERID = MainWindow.UserID;
+            SignUpWindow newAccountWindow = new SignUpWindow();
+            SignUpWindow.Operation = 1;
+            SignUpWindow.USERID = MainWindow.UserID;
             newAccountWindow.ShowDialog();
+        }
+
+        private void DisableAllButtons()
+        {
+            btnHome.IsActive = false;
+            btnFiles.IsActive = false;
+            btnVideo.IsActive = false;
+            btnMusic.IsActive = false;
+            btnImage.IsActive = false;
+        }
+
+        private void btnHome_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DisableAllButtons();
+            btnHome.IsActive = true;
+            Condition.Text = "MR.Clone App";
+        }
+
+        private void btnFiles_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DisableAllButtons();
+            btnFiles.IsActive = true;
+            Condition.Text = "MR.Clone App       Files";
+        }
+
+        private void btnVideo_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DisableAllButtons();
+            btnVideo.IsActive = true;
+            Condition.Text = "MR.Clone App       Video";
+        }
+
+        private void btnMusic_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DisableAllButtons();
+            btnMusic.IsActive = true;
+            Condition.Text = "MR.Clone App       Music";
+        }
+
+        private void btnImage_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DisableAllButtons();
+            btnImage.IsActive = true;
+            Condition.Text = "MR.Clone App       Image";
         }
     }
 }

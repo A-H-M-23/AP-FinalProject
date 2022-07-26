@@ -53,28 +53,13 @@ namespace TransferFile
                 {
                     if (socket.Connected)
                         socket.Disconnect(false);
-                    socket.Close();
+                    Close();
                     socket.Dispose();
                     socket = null;
                 }
                 catch { }
             }
         }
-
-        //private static ListViewItem listViewItem(FileInfo fileInfo)
-        //{
-        //    var lvi = new ListViewItem();
-        //    lvi.Text = fileInfo.Name;
-        //    string strSize = String.Format("{0:0.##}", fileInfo.Length / 1024.0) + " KB";
-        //    if (fileInfo.Length / 1024.0 > 1024)
-        //    {
-        //        strSize = String.Format("{0:0.##}", fileInfo.Length / 1024.0 / 1024.0) + " MB";
-        //    }
-        //    lvi.SubItems.Add(strSize);
-        //    lvi.SubItems.Add("Sending...");
-        //    lvi.SubItems.Add("");
-        //    return lvi;
-        //}
 
         //Close App
         public static void Close()

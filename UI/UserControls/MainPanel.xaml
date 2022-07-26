@@ -57,11 +57,11 @@
 
                 <!--Menu Buttons-->
                 <StackPanel Margin="25 160 0 0">
-                    <uc:MenuButtons Title="Home" Icon="HomeOutline" IsActive="True"/>
-                    <uc:MenuButtons Title="Files" Icon="Attachment"/>
-                    <uc:MenuButtons Title="Videos" Icon="Video"/>
-                    <uc:MenuButtons Title="Music" Icon="Music"/>
-                    <uc:MenuButtons Title="Images" Icon="Image"/>
+                    <uc:MenuButtons Title="Home" Icon="HomeOutline" IsActive="True" x:Name="btnHome" MouseUp="btnHome_MouseUp"/>
+                    <uc:MenuButtons Title="Files" Icon="Attachment" x:Name="btnFiles" MouseUp="btnFiles_MouseUp"/>
+                    <uc:MenuButtons Title="Videos" Icon="Video" x:Name="btnVideo" MouseUp="btnVideo_MouseUp"/>
+                    <uc:MenuButtons Title="Music" Icon="Music" x:Name="btnMusic" MouseUp="btnMusic_MouseUp"/>
+                    <uc:MenuButtons Title="Images" Icon="Image" x:Name="btnImage" MouseUp="btnImage_MouseUp"/>
                 </StackPanel>
 
                 <!--Bottom Menu Buttons-->
@@ -124,7 +124,7 @@
                         <DropShadowEffect BlurRadius="20" ShadowDepth="1" Direction="-90" Opacity="0.1"/>
                     </Grid.Effect>
 
-                    <TextBlock Text="MR.Clone App" FontSize="16" FontWeight="Bold" Margin="20 15" HorizontalAlignment="left"/>
+                    <TextBlock Text="MR.Clone App" FontSize="16" FontWeight="Bold" Margin="20 15" HorizontalAlignment="left" x:Name="Condition"/>
                     <StackPanel Orientation="Horizontal" Margin="0 0 10 0" HorizontalAlignment="Right">
                         <uc:UserImage Image="/Resources/Person2.png" Margin="0 0 -15 0"/>
                         <uc:UserImage Image="/Resources/Person.png"/>
@@ -163,7 +163,7 @@
 
                     <uc:UserChat Username="Mohammadreza Khodarahmi" Image="/Resources/Person.png"/>
 
-                    <uc:Messagechat Color="#68cfa3" Message="باشه معین ولی با کسی راجبش حرف نزنی ها!!!"/>
+                    <uc:Messagechat Color="#68cfa3" Message="باشه معین ولی با کسی راجبش حرف نزنی ها"/>
 
                     <uc:Messagechat Color="#68cfa3" Message="برنامه رو با حسین ریختیم که الان توضیح میده"/>
 
@@ -202,13 +202,12 @@
                             <Button Style="{StaticResource textBoxButton}">
                                 <Icon:PackIconMaterial Kind="MicrophoneOutline" Width="12" Foreground="#a6a6a6" />
                             </Button>
-
                         </StackPanel>
                     </Grid>
 
                     <!--Send button-->
                     <Button Grid.Column="1" Margin="5 0 0 0" Style="{StaticResource textBoxButton}" ToolTip="Send">
-                        <Icon:PackIconMaterial Kind="Send" Margin="3 0 0 2" Width="16" Foreground="#6f59d4">
+                        <Icon:PackIconMaterial Kind="Send" Margin="3 0 0 2" Width="20" Foreground="#6f59d4">
                             <Icon:PackIconMaterial.LayoutTransform>
                                 <RotateTransform Angle="-45" />
                             </Icon:PackIconMaterial.LayoutTransform>

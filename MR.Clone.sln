@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI", "UI\UI.csproj", "{2FB0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransferFile", "TransferFile\TransferFile.csproj", "{B20A12DD-BEAA-435C-8B3B-2597FABFFEE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{BAF3C64B-A90E-4A2F-BE3F-EDA76BD39512}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{BAF3C64B-A90E-4A2F-BE3F-EDA76BD39512}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,14 +1,19 @@
 ﻿<UserControl x:Class="UI.UserControls.WelcomePanel"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-        xmlns:uc="clr-namespace:UI.UserControls"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:uc="clr-namespace:UI.UserControls"
              Height="830" Width="1250">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooltoVis"/>
     </UserControl.Resources>
     <Border CornerRadius="20" Background="#6f50ff">
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="547*"/>
+                <ColumnDefinition Width="703*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*" />
                 <RowDefinition Height=".5*" />
@@ -25,16 +30,16 @@
                     </Icon:PackIconMaterial.LayoutTransform>
                 </Icon:PackIconMaterial>
             </Button>
-            <TextBlock Grid.Row="0" Text="M R . C l o n e" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="150" Foreground="White"/>
-            <TextBlock Grid.Row="1" Text="Best Sharing App Around The World" Margin="0 -160 0 0" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="20" Foreground="White"/>
-            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment ="Center">
+            <TextBlock Text="M R . C l o n e" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="150" Foreground="White" Grid.ColumnSpan="2" Margin="163,0,0,0"/>
+            <TextBlock Text="Best Sharing App Around The World" Margin="465,393,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20" Foreground="White" Grid.ColumnSpan="2"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment ="Center" Grid.ColumnSpan="2" Margin="311,0,0,0">
                 <TextBlock Text="IP Address : " FontSize="20" Foreground="White" />
                 <ComboBox Style="{DynamicResource ComboBoxStyle1}" Width="250" x:Name="addressIP" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                <TextBlock Text="Port : " FontSize="20" Foreground="White" Margin="50 0 0 0"/>
-                <TextBox Width="200" Height="30" x:Name="port" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 0 0 10"/>
+                <materialDesign:PackIcon Kind="Input" Width="30" Height="30" Foreground="White" VerticalAlignment="Top"/>
+                <TextBox x:Name="port" Foreground="White" Width="200" FontSize="18" materialDesign:HintAssist.Hint="Port" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Top" Margin="5 -20 0 0"/>
             </StackPanel>
-            <Border CornerRadius="20" Grid.Row="2" Margin="10" Background="#6146e3"/>
-            <Grid Grid.Row="2" >
+            <Border CornerRadius="20" Grid.Row="2" Margin="10,10,10,10" Background="#6146e3" Grid.ColumnSpan="2"/>
+            <Grid Grid.Row="2" Grid.ColumnSpan="2" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>

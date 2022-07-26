@@ -6,28 +6,32 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace UI
 {
     /// <summary>
-    /// Interaction logic for NewAccountWindow.xaml
+    /// Interaction logic for SignUpWindow.xaml
     /// </summary>
-    public partial class NewAccountWindow : System.Windows.Window
+    public partial class SignUpWindow : Window
     {
+        public static string MalePic = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Resources", "Male.png");
+        public static string FemalePic = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Resources", "Female.png");
         public static int Operation = 0;
         public static int USERID = -1;
         User user;
         private static string imagepath = "/Resources/Avatar.png";
         CustomerRepository repository;
-        public NewAccountWindow()
+        public SignUpWindow()
         {
             InitializeComponent();
             user = new User();
             repository = new CustomerRepository();
         }
 
+        #region Profile PictureSet
         /// <summary>
         /// This Method Is For Set Customers Profile Pictures .
         /// </summary>
@@ -44,27 +48,26 @@ namespace UI
             using (FileStream stream = new FileStream(dispath, FileMode.Create))
                 encoder.Save(stream);
         }
+        #endregion
 
+        #region Null Inputs
         /// <summary>
         /// This Method Is To Have No Null Inputs Or All Fields Are Filled .
         /// </summary>
         /// <returns>If All Fields Are Filled Return True And Else Return False</returns>
         public bool NullInputs()
-
-            //Sign Up Boxes
         {
-            if (txtFirstName.Text != "")
+            if (txtFirstname.Text != "")
             {
-                if (txtLastName.Text != "")
+                if (txtLastname.Text != "")
                 {
-                    if (txtUserName.Text != "")
+                    if (txtUsername.Text != "")
                     {
-
-                        if (txtPassword.Text != "")
+                        if (txtPassword.Password != "")
                         {
-                            if (txtEmailAddress.Text != "")
+                            if (txtEmail.Text != "")
                             {
-                                if (txtPhoneNumber.Text != "")
+                                if (txtMobile.Text != "")
                                 {
                                     if (btnMale.IsChecked == true || btnFemale.IsChecked == true)
                                         return true;
@@ -110,6 +113,26 @@ namespace UI
                 return false;
             }
         }
+        #endregion
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void btnMale_Click(object sender, RoutedEventArgs e)
+        {
+            btnMale.Background = new SolidColorBrush(Color.FromRgb(97, 70, 227));
+            btnFemale.Background = new SolidColorBrush(SystemColors.ActiveBorderBrush.Color);
+            ProfilePhoto.Source = new BitmapImage(new Uri(MalePic));
+        }
+
+        private void btnFemale_Click(object sender, RoutedEventArgs e)
+        {
+            btnFemale.Background = new SolidColorBrush(Color.FromRgb(97, 70, 227));
+            btnMale.Background = new SolidColorBrush(SystemColors.ActiveBorderBrush.Color);
+            ProfilePhoto.Source = new BitmapImage(new Uri(FemalePic));
+        }
 
         /// <summary>
         /// This Methd Is For Validation The Input Of Fields .
@@ -123,17 +146,16 @@ namespace UI
             {
                 if (NullInputs())
                 {
-                    if (Password.PasswordSecurity(txtPassword.Text))
+                    if (Password.PasswordSecurity(txtPassword.Password))
                     {
-                        if (Email.EmailCheck(txtEmailAddress.Text))
+                        if (Email.EmailCheck(txtEmail.Text))
                         {
-                            user.FirstName = txtFirstName.Text;
-                            user.LastName = txtLastName.Text;
-                            user.UserName = txtUserName.Text;
-                            user.PhoneNumber = txtPhoneNumber.Text;
-                            user.Email = txtEmailAddress.Text;
-                            user.HashPassword = PasswordSecurity.HashPassword(txtPassword.Text);
-                            user.Address = txtHomeAddress.Text;
+                            user.FirstName = txtFirstname.Text;
+                            user.LastName = txtLastname.Text;
+                            user.UserName = txtUsername.Text;
+                            user.PhoneNumber = txtMobile.Text;
+                            user.Email = txtEmail.Text;
+                            user.HashPassword = PasswordSecurity.HashPassword(txtPassword.Password);
                             user.Gender = (btnMale.IsChecked == true) ? GenderType.Male : GenderType.Female;
                             ProfilePictureSet();
                             if (Operation == 0)
@@ -154,6 +176,33 @@ namespace UI
             }
             else
                 DialogResult = false;
+        }
+
+        private void btnLogOut_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            Application.Current.Shutdown();
+            mainWindow.ShowDialog();
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            SignUpWindow accountWindow = new SignUpWindow();
+            SignUpWindow.USERID = user.ID;
+            SignUpWindow.Operation = 2;
+            this.Close();
+            accountWindow.ShowDialog();
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show($"{user.FirstName} {user.LastName} Are You Sure Delete Your Account ?", "Delete Account", MessageBoxButton.YesNo, MessageBoxImage.Error) == MessageBoxResult.Yes)
+                repository.Delete(user);
+            MainWindow mainWindow = new MainWindow();
+            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            Application.Current.Shutdown();
+            mainWindow.ShowDialog();
         }
 
         /// <summary>
@@ -198,62 +247,30 @@ namespace UI
             {
                 user = CustomerRepository.customersList.FirstOrDefault(c => c.ID == USERID);
                 btnNewAccount.Content = "Confirm";
-                txtFirstName.Text = user.FirstName;
-                txtLastName.Text = user.LastName;
-                txtUserName.Text = user.UserName;
-                txtEmailAddress.Text = user.Email;
-                txtPhoneNumber.Text = user.PhoneNumber;
+                txtFirstname.Text = user.FirstName;
+                txtLastname.Text = user.LastName;
+                txtUsername.Text = user.UserName;
+                txtEmail.Text = user.Email;
+                txtMobile.Text = user.PhoneNumber;
                 if (user.Gender == GenderType.Male)
                     btnMale.IsChecked = true;
                 else
                     btnFemale.IsChecked = true;
-                txtHomeAddress.Text = user.Address;
                 var convertor = new ImageSourceConverter();
                 ProfilePhoto.Source = (ImageSource)convertor.ConvertFromString(user.ProfilePhoto);
             }
             if (Operation == 1)
             {
                 TopLabel.Text = "Account Info";
-                PasswordTab.Visibility = Visibility.Hidden;
                 btnProfilePhoto.Visibility = Visibility.Hidden;
-                txtFirstName.IsReadOnly = true;
-                txtLastName.IsReadOnly = true;
-                txtUserName.IsReadOnly = true;
-                txtEmailAddress.IsReadOnly = true;
-                txtPhoneNumber.IsReadOnly = true;
+                txtFirstname.IsReadOnly = true;
+                txtLastname.IsReadOnly = true;
+                txtUsername.IsReadOnly = true;
+                txtEmail.IsReadOnly = true;
+                txtMobile.IsReadOnly = true;
                 btnMale.IsEnabled = false;
                 btnFemale.IsEnabled = false;
-                txtHomeAddress.IsReadOnly = true;
             }
-        }
-
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
-        {
-            if (MessageBox.Show($"{user.FirstName} {user.LastName} Are You Sure Delete Your Account ?", "Delete Account", MessageBoxButton.YesNo, MessageBoxImage.Error) == MessageBoxResult.Yes)
-                repository.Delete(user);
-            MainWindow mainWindow = new MainWindow();
-            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-            Application.Current.Shutdown();
-            mainWindow.ShowDialog();
-        }
-
-        //Edit Account
-        private void btnEdit_Click(object sender, RoutedEventArgs e)
-        {
-            NewAccountWindow accountWindow = new NewAccountWindow();
-            NewAccountWindow.USERID = user.ID;
-            NewAccountWindow.Operation = 2;
-            this.Close();
-            accountWindow.ShowDialog();
-        }
-        
-        //Log Out
-        private void btnLogOut_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = new MainWindow();
-            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-            Application.Current.Shutdown();
-            mainWindow.ShowDialog();
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)

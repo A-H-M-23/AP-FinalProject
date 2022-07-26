@@ -120,8 +120,8 @@ namespace UI
         /// <param name="e"></param>
         private void btnNewAccount_Click(object sender, RoutedEventArgs e)
         {
-            NewAccountWindow newAccountWindow = new NewAccountWindow();
-            NewAccountWindow.Operation = 0;
+            SignUpWindow newAccountWindow = new SignUpWindow();
+            SignUpWindow.Operation = 0;
             newAccountWindow.ShowDialog();
             if (newAccountWindow.DialogResult == true)
             {
