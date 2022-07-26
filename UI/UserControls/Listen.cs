@@ -36,28 +36,6 @@ namespace TransferFile
             }
 
             IsStop = false;
-            UserFileSend fileSend;
-            MainPanel mainPanel;
-
-
-
-            void AddFile(ReceiveFileInfo o)
-            {
-                var dispatcher = Dispatcher.CurrentDispatcher;
-                if (Application.Current != null)
-                    dispatcher = Application.Current.Dispatcher;
-                if (dispatcher != null)
-                {
-                    dispatcher.Invoke(() =>
-                        {
-                            fileSend = new UserFileSend();
-                            fileSend.Username = o.FileName;
-                            fileSend.Address = System.AppDomain.CurrentDomain.BaseDirectory + @"Downloads\" + o.FileName;
-                            mainPanel = new MainPanel();
-                            mainPanel.AddMessageToUi(fileSend);
-                        });
-                }
-            }
 
             new Thread(() =>
             {

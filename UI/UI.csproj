@@ -8,10 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Avatar.png" />
+    <None Remove="Resources\Female.png" />
     <None Remove="Resources\Login.jpg" />
+    <None Remove="Resources\Male.png" />
     <None Remove="Resources\MR.Clone.png" />
     <None Remove="Resources\Person.png" />
     <None Remove="Resources\Person2.png" />
+    <None Remove="Resources\SignUp.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,12 +40,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Avatar.png" />
+    <Resource Include="Resources\Female.png" />
     <Resource Include="Resources\Login.jpg" />
+    <Resource Include="Resources\Male.png" />
     <Resource Include="Resources\MR.Clone.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
+    <PackageReference Include="MaterialDesignColors" Version="2.0.6" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,6 +61,7 @@
   <ItemGroup>
     <Resource Include="Resources\Person.png" />
     <Resource Include="Resources\Person2.png" />
+    <Resource Include="Resources\SignUp.png" />
   </ItemGroup>
 
   <ItemGroup>

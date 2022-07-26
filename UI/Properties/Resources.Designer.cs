@@ -73,9 +73,29 @@ namespace UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Female {
+            get {
+                object obj = ResourceManager.GetObject("Female", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Login {
             get {
                 object obj = ResourceManager.GetObject("Login", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Male {
+            get {
+                object obj = ResourceManager.GetObject("Male", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -106,6 +126,16 @@ namespace UI.Properties {
         internal static byte[] Person2 {
             get {
                 object obj = ResourceManager.GetObject("Person2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] SignUp {
+            get {
+                object obj = ResourceManager.GetObject("SignUp", resourceCulture);
                 return ((byte[])(obj));
             }
         }
