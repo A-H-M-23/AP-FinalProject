@@ -40,11 +40,13 @@ namespace UI
             {
                 Directory.CreateDirectory("Downloads");
             }
-            if (!IsClient)
+            if(!IsClient)
             {
                 try
                 {
+
                     Listen.Start(int.Parse(Port));
+
                 }
                 catch (Exception ex)
                 {
@@ -55,7 +57,7 @@ namespace UI
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left)
+            if ( e.ChangedButton == MouseButton.Left )
             {
                 this.DragMove();
             }
@@ -68,7 +70,7 @@ namespace UI
         {
             if (e.ClickCount == 2)
             {
-                if (IsMaximized)
+                if(IsMaximized)
                 {
                     this.WindowState = WindowState.Normal;
                     this.Width = 1250;
@@ -83,8 +85,8 @@ namespace UI
             }
         }
 
-        //Close Button
-        private void Exitbtn_Click(object sender, RoutedEventArgs e)
+        //Close Buttons
+        private void Exitbtn_Click (object sender, RoutedEventArgs e)
         {
             this.Close();
             Listen.Stop();
@@ -100,7 +102,7 @@ namespace UI
             file.Multiselect = true;
             file.Title = "Select Files";
 
-            if (file.ShowDialog() == true)
+            if(file.ShowDialog() == true)
             {
                 foreach (string fileName in file.FileNames)
                 {
@@ -114,5 +116,6 @@ namespace UI
             this.Close();
             Listen.Stop();
         }
+
     }
 }
