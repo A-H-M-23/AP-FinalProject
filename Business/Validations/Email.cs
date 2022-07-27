@@ -13,9 +13,13 @@ namespace Business.Validations
         {
             string pattern = @"^[A-Za-z0-9._]{1,256}@[A-Za-z0-9]{1,256}[.][A-Za-z]{2,4}[.]{0,1}[A-Za-z]{0,4}";
             if (Regex.IsMatch(email, pattern))
+            {
                 return true;
+            }
             else
+            {
                 return false;
+            }
         }
     }
 }
