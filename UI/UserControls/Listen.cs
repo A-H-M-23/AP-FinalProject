@@ -18,9 +18,10 @@ namespace TransferFile
         public static ContainerItemEvent AddContainerItem { get; set; }
 
         //Socket Functions
+        //Start listening
         public static void Start(int port)
         {
-            if (socket != null)
+            if (socket !=null)
                 return;
 
             try
@@ -59,6 +60,7 @@ namespace TransferFile
                 }
             }
 
+            //Build a New Thread on CPU for send Data
             new Thread(() =>
             {
                 while (true)
@@ -106,6 +108,8 @@ namespace TransferFile
 
 
         //Stop the Socket
+        //Stop listening
+
         public static void Stop()
         {
             IsStop = true;

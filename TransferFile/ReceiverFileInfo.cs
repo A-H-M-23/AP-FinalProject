@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace TransferFile
 {
+    //Get the file information(Name & Size)
     public class ReceiveFileInfo
     {
         public string FileName { get; set; }

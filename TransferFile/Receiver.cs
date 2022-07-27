@@ -31,6 +31,7 @@ namespace TransferFile
         }
 
         //Disconnect operation
+        //Disconnect socket
         private void Dispose()
         {
             socket.Disconnect(false);

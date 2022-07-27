@@ -76,7 +76,8 @@ namespace TransferFile
         //    return lvi;
         //}
 
-        //Close App
+        //Close App 
+        //Disconnect Socket
         public static void Close()
         {
             foreach (Socket item in sockets)
