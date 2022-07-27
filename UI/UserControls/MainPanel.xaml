@@ -69,6 +69,7 @@
                 <StackPanel Margin="25 0 0 40" VerticalAlignment="Bottom">
                     <uc:MenuButtons Title="Theme" Icon="ThemeLightDark" x:Name="btnTheme" MouseUp="btnTheme_MouseUp"/>
                     <uc:MenuButtons Title="LogOut" Icon="Logout" x:Name="LogOut" MouseUp="LogOut_MouseUp"/>
+                    <uc:MenuButtons Title="Setting" Icon="Cog" x:Name="Setting" MouseUp="Setting_MouseUp"/>
                 </StackPanel>
 
             </Grid>
@@ -197,7 +198,7 @@
                                 <Icon:PackIconMaterial Kind="Paperclip" Width="12" Foreground="#a6a6a6" />
                             </Button>
 
-                            <Button Style="{StaticResource textBoxButton}">
+                            <Button Style="{StaticResource textBoxButton}" x:Name="btnMicrophone" Click="btnMicrophone_Click">
                                 <Icon:PackIconMaterial Kind="MicrophoneOutline" Width="12" Foreground="#a6a6a6" />
                             </Button>
                         </StackPanel>
