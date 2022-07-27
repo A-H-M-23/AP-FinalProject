@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransferFile", "TransferFil
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{BAF3C64B-A90E-4A2F-BE3F-EDA76BD39512}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{9BC06AD6-E26B-4334-9933-6395C9BAD559}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,8 @@ Global
 		{BAF3C64B-A90E-4A2F-BE3F-EDA76BD39512}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAF3C64B-A90E-4A2F-BE3F-EDA76BD39512}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAF3C64B-A90E-4A2F-BE3F-EDA76BD39512}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BC06AD6-E26B-4334-9933-6395C9BAD559}.Debug|Any CPU.ActiveCfg = Debug
+		{9BC06AD6-E26B-4334-9933-6395C9BAD559}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
