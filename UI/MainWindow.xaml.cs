@@ -40,6 +40,7 @@ namespace UI
             {
                 try
                 {
+                    Listen.AddressIP = AddressIP;
                     Listen.Start(int.Parse(Port));
                 }
                 catch (Exception ex)

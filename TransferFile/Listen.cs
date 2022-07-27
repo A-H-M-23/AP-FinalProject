@@ -1,11 +1,5 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Net.Sockets;
-using System.Threading;
-using System.Windows;
-using System.Windows.Threading;
-using UI;
-using UI.UserControls;
 
 
 namespace TransferFile
@@ -14,8 +8,9 @@ namespace TransferFile
     {
         private static Socket socket;
         private static bool IsStop;
-        public delegate void ContainerItemEvent(UserFileSend userItem);
-        public static ContainerItemEvent AddContainerItem { get; set; }
+        public static string AddressIP;
+        //public delegate void ContainerItemEvent(UserFileSend userItem);
+        //public static ContainerItemEvent AddContainerItem { get; set; }
 
         //Socket Functions
         public static void Start(int port)
@@ -26,7 +21,7 @@ namespace TransferFile
             try
             {
                 socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                socket.Bind(new IPEndPoint(IPAddress.Parse(MainWindow.AddressIP), port));
+                socket.Bind(new IPEndPoint(IPAddress.Parse(AddressIP), port));
                 socket.Listen(1);
             }
             catch (Exception ex)
@@ -62,23 +57,24 @@ namespace TransferFile
                 }
             }).Start();
         }
-        static UserFileSend item = new UserFileSend();
-        private static void UserItem(ReceiveFileInfo fileInfo)
-        {
-            var dispatcher = Dispatcher.CurrentDispatcher;
-            if (Application.Current != null)
-                dispatcher = Application.Current.Dispatcher;
-            if (dispatcher != null)
-            {
-                dispatcher.Invoke(() =>
-                {
-                    var mainPanel = new MainPanel();
-                    item.Username = fileInfo.FileName;
-                    item.Address = System.AppDomain.CurrentDomain.BaseDirectory + @"Downloads\" + fileInfo.FileName;
-                    mainPanel.AddMessageToUi(item);
-                });
-            }
-        }
+
+        //static UserFileSend item = new UserFileSend();
+        //private static void UserItem(ReceiveFileInfo fileInfo)
+        //{
+        //    var dispatcher = Dispatcher.CurrentDispatcher;
+        //    if (Application.Current != null)
+        //        dispatcher = Application.Current.Dispatcher;
+        //    if (dispatcher != null)
+        //    {
+        //        dispatcher.Invoke(() =>
+        //        {
+        //            var mainPanel = new MainPanel();
+        //            item.Username = fileInfo.FileName;
+        //            item.Address = System.AppDomain.CurrentDomain.BaseDirectory + @"Downloads\" + fileInfo.FileName;
+        //            mainPanel.AddMessageToUi(item);
+        //        });
+        //    }
+        //}
 
         //Stop the Socket
         public static void Stop()
