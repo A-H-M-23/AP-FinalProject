@@ -21,6 +21,10 @@ namespace UI
         public MainWindow()
         {
             InitializeComponent();
+            if (!File.Exists("./UserData.txt"))
+            {
+                File.Create("./UserData.txt");
+            }
             ReadJSON.User();
             welcome = new WelcomePanel();
             main = new MainPanel();
@@ -40,6 +44,7 @@ namespace UI
             {
                 try
                 {
+                    Listen.AddressIP = AddressIP;
                     Listen.Start(int.Parse(Port));
                 }
                 catch (Exception ex)

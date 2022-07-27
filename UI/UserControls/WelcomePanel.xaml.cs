@@ -105,8 +105,6 @@ namespace UI.UserControls
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            var currentExecutablePath = Process.GetCurrentProcess().MainModule.FileName;
-            Process.Start(currentExecutablePath);
             Application.Current.Shutdown();
         }
     }

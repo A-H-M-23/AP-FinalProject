@@ -12,7 +12,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Purple.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            
+
             <Style x:Key="leftSideButton" TargetType="Button">
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="Foreground" Value="#ffffff"/>
@@ -445,33 +445,6 @@
             </Style>
             <!--#endregion-->
 
-            <Style x:Key="searchTextbox" TargetType="TextBox">
-                <Setter Property="Background" Value="#ffffff"/>
-                <Setter Property="Foreground" Value="#767676"/>
-                <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="FontSize" Value="12"/>
-                <Setter Property="Padding" Value="150 15"/>
-                <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="Margin" Value="0 10"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="TextBoxBase">
-                            <Border x:Name="border" CornerRadius="22" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="True">
-                                <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="BorderBrush" Value="#d9d9d9" TargetName="border"/>
-                                </Trigger>
-                                <Trigger Property="IsKeyboardFocused" Value="True">
-                                    <Setter Property="BorderBrush" Value="#d9d9d9" TargetName="border"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-
             <Style x:Key="textBoxButton" TargetType="Button">
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="Foreground" Value="#88878e"/>
@@ -509,36 +482,6 @@
                 <Setter Property="HorizontalAlignment" Value="Right"/>
             </Style>
 
-            <Style x:Key="messageTextbox" TargetType="TextBox">
-                <Setter Property="Background" Value="#f5f7f9" />
-                <Setter Property="Foreground" Value="#767676" />
-                <Setter Property="BorderThickness" Value="1" />
-                <Setter Property="BorderBrush" Value="#e1e0e3" />
-                <Setter Property="FontSize" Value="12" />
-                <Setter Property="Padding" Value="10 15 120 15" />
-                <Setter Property="VerticalAlignment" Value="Center" />
-                <Setter Property="Margin" Value="0 10" />
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="TextBoxBase">
-                            <Border x:Name="border" CornerRadius="3" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}"
-								BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="True">
-                                <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden"
-										  VerticalScrollBarVisibility="Hidden" />
-                            </Border>
-
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="BorderBrush" Value="#d9d9d9" TargetName="border" />
-                                </Trigger>
-                                <Trigger Property="IsKeyboardFocused" Value="True">
-                                    <Setter Property="BorderBrush" Value="#d9d9d9" TargetName="border" />
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

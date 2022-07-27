@@ -5,6 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>MR.Clone.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -40,6 +41,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="MR.Clone.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Resources\Avatar.png" />
     <Resource Include="Resources\Female.png" />
     <Resource Include="Resources\Login.jpg" />
@@ -51,11 +56,21 @@
     <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
     <PackageReference Include="MaterialDesignColors" Version="2.0.6" />
     <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
+    <PackageReference Include="NAudio" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Business\Business.csproj" />
     <ProjectReference Include="..\TransferFile\TransferFile.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Business">
+      <HintPath>..\Business\bin\Debug\net6.0\Business.dll</HintPath>
+    </Reference>
+    <Reference Include="TransferFile">
+      <HintPath>..\TransferFile\bin\Debug\net6.0\TransferFile.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

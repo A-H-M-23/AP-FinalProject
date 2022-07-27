@@ -5,12 +5,7 @@
              x:Name="userFileSend">
     <Border CornerRadius="10 0 10 10" Background="#c490ff" Padding="12" HorizontalAlignment="Right" Margin="0 5 0 0" FlowDirection="RightToLeft">
         <StackPanel Orientation="Horizontal">
-            <Button Width="40" Height="40" Background="#900e9c" BorderThickness=".75" x:Name="AttachFile" Click="AttachFile_Click" BorderBrush="#4f0057">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="20"/>
-                    </Style>
-                </Button.Resources>
+            <Button Width="40" Style="{DynamicResource MaterialDesignFloatingActionMiniButton}" Height="40" Background="#900e9c" BorderThickness=".75" x:Name="AttachFile" Click="AttachFile_Click" BorderBrush="#4f0057">
                 <Icon:PackIconMaterial Kind="File" Width="12" Foreground="#a6a6a6" />
             </Button>
             <Separator Margin="3 0 0 0" Background="#4f0057">

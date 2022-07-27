@@ -17,7 +17,6 @@ namespace Business
         [Required(ErrorMessage = "Phone Number is Required")]
         [RegularExpression("^09[0-9]{9}$", ErrorMessage = "Phone Number is`nt Valid")]
         public string PhoneNumber { get; set; }
-
         [Required(ErrorMessage = "Email is Required")]
         [RegularExpression("^[A-Za-z0-9._]{1,256}@[A-Za-z0-9]{1,256}[.][A-Za-z]{2,4}[.]{0,1}[A-Za-z]{0,4}", ErrorMessage = "Email is invalid")]
         public string Email { get; set; }
