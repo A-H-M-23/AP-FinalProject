@@ -12,27 +12,21 @@
         {
             if (password.Length >= 8)
             {
-                if (password.Any(char.IsUpper))
+                if (password.Any(char.IsNumber))
                 {
                     if (password.Any(char.IsLower))
                     {
-                        if (password.Any(char.IsNumber))
+                        if (password.Any(char.IsUpper))
                         {
-                            if (password.Any(char.IsSymbol) || password.Contains('@') || password.Contains('&') || password.Contains('?') || password.Contains('!') || password.Contains(';'))
-                            {
+                            if (password.Any(char.IsSymbol) || password.Contains('!') || password.Contains('&') || password.Contains('?') || password.Contains('@') || password.Contains(';'))
                                 return true;
-                            }
-                            else
-                                return false;
+                            else return false;
                         }
-                        else
-                            return false;
+                        else return false;
                     }
-                    else
-                        return false;
+                    else return false;
                 }
-                else
-                    return false;
+                else return false;
             }
             else
                 return false;

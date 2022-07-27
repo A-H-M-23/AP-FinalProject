@@ -1,7 +1,7 @@
 ﻿namespace Business.Interfaces
 {
     /// <summary>
-    /// This Interface Is For The Repository Customer ,
+    /// This Interface is For The Repository Customer ,
     /// Which Calls The Function Of Writing To The Json File
     /// And Reading The ICollection From The Json File.
     /// </summary>

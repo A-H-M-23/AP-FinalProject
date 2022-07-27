@@ -7,15 +7,15 @@ namespace Business.Validations
     {
         public static string HashPassword(string value)
         {
-            StringBuilder Sb = new StringBuilder();
+            StringBuilder Hashpass = new StringBuilder();
             using (SHA256 hash = SHA256.Create())
             {
                 Encoding enc = Encoding.UTF8;
                 byte[] result = hash.ComputeHash(enc.GetBytes(value));
                 foreach (byte b in result)
-                    Sb.Append(b.ToString("x2"));
+                    Hashpass.Append(b.ToString("x2"));
             }
-            return Sb.ToString();
+            return Hashpass.ToString();
         }
     }
 }

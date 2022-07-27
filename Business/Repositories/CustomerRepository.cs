@@ -11,14 +11,14 @@ namespace Business.Repositories
         }
         public static List<User> customersList = new List<User>();
         /// <summary>
-        /// Write the Information Of Customer Which is Stored in CustomerList in JSON File
+        /// Write the Information Of Customer/users Which is Stored in CustomerList in JSON File
         /// </summary>
         public void WriteJson(User user)
         {
             _fileContext.Create(user);
         }
         /// <summary>
-        /// Read the Information Of Customer Which is Stored in JSON File and Fill List Of Customer With it
+        /// Read the Information Of Customer/users Which is Stored in JSON File and Fill List Of Customer With it
         /// </summary>
         public ICollection<User> ReadJson(User user)
         {
