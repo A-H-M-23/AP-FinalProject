@@ -46,29 +46,34 @@ namespace UI.UserControls
             }
         }
 
-        private void btnFileSelect_Click(object sender, RoutedEventArgs e)
+        private void FileSend(OpenFileDialog dialog)
         {
             IPAddress ipAddr = IPAddress.Parse(MainWindow.AddressIP);
             int port = int.Parse(MainWindow.Port);
 
+            Dispatcher.Invoke(() =>
+            {
+                foreach (string fileName in dialog.FileNames)
+                {
+                    new Thread(() => { Sender.Send(ipAddr, port, fileName); }).Start();
+                    MyFileSend fileSend = new MyFileSend();
+                    string[] Temp = fileName.Split(@"\");
+                    fileSend.Username = Temp[Temp.Length - 1];
+                    fileSend.Address = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Downloads", Temp[Temp.Length - 1]);
+                    AddMessageToUi(fileSend);
+                }
+            });
+        }
+
+        private void btnFileSelect_Click(object sender, RoutedEventArgs e)
+        {
             var file = new OpenFileDialog();
             file.Multiselect = true;
             file.Title = "Select Files";
 
             if (file.ShowDialog() == true)
             {
-                Dispatcher.Invoke(() =>
-                {
-                    foreach (string fileName in file.FileNames)
-                    {
-                        new Thread(() => { Sender.Send(ipAddr, port, fileName); }).Start();
-                        MyFileSend fileSend = new MyFileSend();
-                        string[] Temp = fileName.Split(@"\");
-                        fileSend.Username = Temp[Temp.Length - 1];
-                        fileSend.Address = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory , "Downloads" , Temp[Temp.Length - 1]);
-                        AddMessageToUi(fileSend);
-                    }
-                });
+                FileSend(file);
             }
         }
 
@@ -127,6 +132,16 @@ namespace UI.UserControls
             DisableAllButtons();
             btnFiles.IsActive = true;
             Condition.Text = "MR.Clone App       Files";
+
+            var file = new OpenFileDialog();
+            file.Multiselect = true;
+            file.Title = "Select Files";
+            file.Filter = "Text files (*.txt)|*.txt|Rar files (*.rar)|*.rar|Zip files (*.zip)|*.zip|PDF files (*.pdf)|*.pdf";
+
+            if (file.ShowDialog() == true)
+            {
+                FileSend(file);
+            }
         }
 
         private void btnVideo_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -134,6 +149,16 @@ namespace UI.UserControls
             DisableAllButtons();
             btnVideo.IsActive = true;
             Condition.Text = "MR.Clone App       Video";
+
+            var file = new OpenFileDialog();
+            file.Multiselect = true;
+            file.Title = "Select Images";
+            file.Filter = "Mp4 files (*.mp4)|*.mp4|MOV files (*.mov)|*.mov|Mkv files (*.mkv)|*.mkv|Mpg files (*.mpg)|*.mpg|Avi files (*.avi)|*.avi";
+
+            if (file.ShowDialog() == true)
+            {
+                FileSend(file);
+            }
         }
 
         private void btnMusic_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -141,6 +166,16 @@ namespace UI.UserControls
             DisableAllButtons();
             btnMusic.IsActive = true;
             Condition.Text = "MR.Clone App       Music";
+
+            var file = new OpenFileDialog();
+            file.Multiselect = true;
+            file.Title = "Select Images";
+            file.Filter = "Mp3 files (*.mp3)|*.mp3|AAC files (*.aac)|*.aac|Ogg files (*.ogg)|*.ogg|Wav files (*.wav)|*.wav|Mp2 files (*.mp2)|*.mp2";
+
+            if (file.ShowDialog() == true)
+            {
+                FileSend(file);
+            }
         }
 
         private void btnImage_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -148,6 +183,16 @@ namespace UI.UserControls
             DisableAllButtons();
             btnImage.IsActive = true;
             Condition.Text = "MR.Clone App       Image";
+
+            var file = new OpenFileDialog();
+            file.Multiselect = true;
+            file.Title = "Select Images";
+            file.Filter = "Jpeg files (*.jpg)|*.jpg|Png files (*.png)|*.png|Tif files (*.tif)|*.tif|Gif files (*.gif)|*.gif|Svg files (*.svg)|*.svg|Bitmap files (*.bitmap)|*.bitmap";
+
+            if (file.ShowDialog() == true)
+            {
+                FileSend(file);
+            }
         }
     }
 }
